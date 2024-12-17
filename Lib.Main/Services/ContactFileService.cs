@@ -27,13 +27,15 @@ public class ContactFileService : IFileService
         }
         catch (Exception ex)
         {
-            Debug.WriteLine(ex.Message);
+            Debug.WriteLine("You got errors in FileService.GetContentFromFile: " + ex.Message);
             return String.Empty;
         }
     }
 
     public bool WriteContentToFile(string content)
     {
+        if (string.IsNullOrWhiteSpace(content)) return false;
+
         try
         {
             File.WriteAllText(_filePath, content);
@@ -41,7 +43,7 @@ public class ContactFileService : IFileService
         }
         catch (Exception ex)
         {
-            Debug.WriteLine(ex.Message);
+            Debug.WriteLine("You got errors in FileService.GetContentFromFile: " + ex.Message);
             return false;
         }
     }

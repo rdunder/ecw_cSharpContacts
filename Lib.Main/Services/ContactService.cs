@@ -14,27 +14,20 @@ public class ContactService : IContactService
     public ContactService(IFileService fileService)
     {
         _fileService = fileService;
-        _contacts = ContactJsonSerializer.Deserialize(_fileService.GetContentFromFile());
+        _contacts = UpdateContactList();
     }
 
 
 
-    public bool AddContact(ContactFormModel contactForm)
+    public void AddContact(ContactFormModel contactForm)
     {
-        try
+        ContactEntity contactEntity = ContactFactory.Create(contactForm);
+        contactEntity.Id = Guid.NewGuid();
+        _contacts.Add(contactEntity);
+                
+        if (!_fileService.WriteContentToFile(ContactJsonSerializer.Serialize(_contacts)))
         {
-            ContactEntity contactEntity = ContactFactory.Create(contactForm);
-            contactEntity.Id = Guid.NewGuid();
-            _contacts.Add(contactEntity);
-
-            _fileService.WriteContentToFile(ContactJsonSerializer.Serialize(_contacts));
-
-            return true;
-        }
-        catch (Exception ex)
-        {
-            Debug.WriteLine("ContactService got errors when on add contact: " + ex.Message);
-            return false;
+            throw new IOException("Errors in FileService.WriteContentToFile");
         }
     }
 
@@ -72,4 +65,18 @@ public class ContactService : IContactService
     {
         throw new NotImplementedException();
     }
+    
+    private List<ContactEntity> UpdateContactList()
+    {
+        try
+        {
+            return ContactJsonSerializer.Deserialize(_fileService.GetContentFromFile()) ?? new List<ContactEntity>();
+        }
+        catch (Exception ex)
+        {
+            Debug.WriteLine($"You got errors in ContactService.UpdateContactList: {ex.Message}");
+            return new List<ContactEntity>();
+        }
+    }
 }
+

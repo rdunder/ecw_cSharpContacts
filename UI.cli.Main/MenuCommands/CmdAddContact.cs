@@ -41,9 +41,10 @@ namespace UI.cli.Main.MenuCommands
             Console.Write("City: ");
             formModel.City = Console.ReadLine() ?? "";
 
+            _contactService.AddContact(formModel);
 
 
-            
+            /* User this block if using a validation of any sort for the DTO
             if (_contactService.AddContact(formModel))
             {
                 Console.ForegroundColor = ConsoleColor.Green;
@@ -57,6 +58,7 @@ namespace UI.cli.Main.MenuCommands
                 Console.WriteLine("There was errors somewhere...");
                 Console.ForegroundColor = ConsoleColor.White;
             }
+            */
         }
     }
 }

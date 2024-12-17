@@ -12,7 +12,7 @@ public static class ContactJsonSerializer
     {
         try
         {
-            return JsonSerializer.Deserialize<List<ContactEntity>>(content);
+            return JsonSerializer.Deserialize<List<ContactEntity>>(content) ?? null!;
         }
         catch (Exception ex)
         {
