@@ -25,7 +25,6 @@ public static class ContactFactory
         }
         catch (Exception ex)
         {
-            Console.WriteLine("Factory got error when creating Contact Entity!");
             Debug.WriteLine($"Error when creating Contact Entity:\n{ex.Message}\n");
             return new ContactEntity();
         }
@@ -49,7 +48,6 @@ public static class ContactFactory
         }
         catch (Exception ex)
         {
-            Console.WriteLine("Factory got error when creating Contact ContactModel!");
             Debug.WriteLine($"Error when creating Contact Entity:\n{ex.Message}\n");
             return new ContactModel();
         }

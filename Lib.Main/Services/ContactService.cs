@@ -24,7 +24,9 @@ public class ContactService : IContactService
         ContactEntity contactEntity = ContactFactory.Create(contactForm);
         contactEntity.Id = Guid.NewGuid();
         _contacts.Add(contactEntity);
-                
+        
+        //  save json in a variable, in a try/catch, then use if statement on fileservice
+        //  change this method to return a bool.
         if (!_fileService.WriteContentToFile(ContactJsonSerializer.Serialize(_contacts)))
         {
             throw new IOException("Errors in FileService.WriteContentToFile");
