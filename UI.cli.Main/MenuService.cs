@@ -18,7 +18,8 @@ internal class MenuService
         _commands = new List<IMenuCommand>()
         {
             new CmdAddContact(contactService),
-            new CmdGetAllContacts(contactService)
+            new CmdGetAllContacts(contactService),
+            new CmdTestingRemoveUpdate(contactService)
         };
     }
 
@@ -30,7 +31,7 @@ internal class MenuService
 
             Console.ForegroundColor = ConsoleColor.Red;
             Console.WriteLine("********************************************************");
-            Console.WriteLine("OBS! this app is saving a file called DialHardDatabase.json in");
+            Console.WriteLine("OBS! this app is saving a file called Database.json in");
             Console.WriteLine($"{Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Personal), "DialHard")}");
             Console.WriteLine("********************************************************\n\n");
             Console.ForegroundColor = ConsoleColor.White;

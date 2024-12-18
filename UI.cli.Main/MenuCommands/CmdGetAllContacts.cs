@@ -21,6 +21,7 @@ internal class CmdGetAllContacts(IContactService contactService) : IMenuCommand
             foreach (var contact in contacts)
             {
                 Console.WriteLine($"{contact.FirstName,-10}{contact.LastName,-15}{contact.Email,-25}{contact.PhoneNumber,12}");
+                Console.WriteLine("ID: " + contact.Id + "\n");
             }
         }
         else

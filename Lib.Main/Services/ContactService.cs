@@ -3,6 +3,7 @@ using Lib.Main.Helpers;
 using Lib.Main.Interfaces;
 using Lib.Main.Models;
 using System.Diagnostics;
+using System.Linq.Expressions;
 
 namespace Lib.Main.Services;
 
@@ -28,6 +29,8 @@ public class ContactService : IContactService
     //
     public bool AddContact(ContactFormModel contactForm)
     {
+        if (_contacts.Any(c => c.Email == contactForm.Email)) return false;
+
         ContactEntity contactEntity = ContactFactory.Create(contactForm);
         contactEntity.Id = Guid.NewGuid();
         _contacts.Add(contactEntity);
@@ -69,14 +72,52 @@ public class ContactService : IContactService
 
     public bool RemoveContact(Guid id)
     {
-        throw new NotImplementedException();
+        if (!_contacts.Any(_contact => _contact.Id == id)) return false;
+
+        try
+        {
+            _contacts.RemoveAll(entity => entity.Id == id);
+            var jsonString = ContactJsonSerializer.Serialize(_contacts);
+
+            if (!_fileService.WriteContentToFile(jsonString))
+            {
+                return false;
+            }
+        }
+        catch
+        {
+            return false;
+        }
+
+        return true;
     }
 
-    public IEnumerable<ContactModel> UpdateContact(Guid id, ContactFormModel contactForm)
+    public bool UpdateContact(Guid id, ContactFormModel contactForm)
     {
-        throw new NotImplementedException();
+        if (!_contacts.Any(contact => contact.Id == id)) return false;
+
+        var entity = _contacts.Where(e => e.Id == id).FirstOrDefault();
+        if (entity == null)
+            return false;
+
+        entity.FirstName    = string.IsNullOrEmpty(contactForm.FirstName)   ? entity.FirstName     : contactForm.FirstName;
+        entity.LastName     = string.IsNullOrEmpty(contactForm.LastName)    ? entity.LastName      : contactForm.LastName;
+        entity.Email        = string.IsNullOrEmpty(contactForm.Email)       ? entity.Email         : contactForm.Email;
+        entity.PhoneNumber  = string.IsNullOrEmpty(contactForm.PhoneNumber) ? entity.PhoneNumber   : contactForm.PhoneNumber;
+        entity.Address      = string.IsNullOrEmpty(contactForm.Address)     ? entity.Address       : contactForm.Address;
+        entity.PostalCode   = string.IsNullOrEmpty(contactForm.PostalCode)  ? entity.PostalCode    : contactForm.PostalCode;
+        entity.City         = string.IsNullOrEmpty(contactForm.City)        ? entity.City          : contactForm.City;
+
+        var jsonString = ContactJsonSerializer.Serialize(_contacts);
+
+        if (!_fileService.WriteContentToFile(jsonString))
+        {
+            return false;
+        }
+
+        return true;
     }
-    
+
     private List<ContactEntity> UpdateContactList()
     {
         try

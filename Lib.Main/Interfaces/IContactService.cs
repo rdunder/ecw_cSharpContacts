@@ -10,5 +10,5 @@ public interface IContactService
     public IEnumerable<ContactModel> GetAllContacts();
     public ContactModel GetContactById(Guid id);
     public bool RemoveContact(Guid id);
-    public IEnumerable<ContactModel> UpdateContact(Guid id, ContactFormModel contactForm);
+    public bool UpdateContact(Guid id, ContactFormModel contactForm);
 }
