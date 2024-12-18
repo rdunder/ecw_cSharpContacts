@@ -34,4 +34,19 @@ public class ContactJsonSerializerTests
         Assert.NotNull(result);
         Assert.IsType<string>(result);
     }
+
+    [Fact]
+    public void Serialize_ShouldReturnNull()
+    {
+        //  Arrange
+        List<ContactEntity> testList = null!;
+
+        //  Act
+        var result = ContactJsonSerializer.Serialize(testList);
+
+        //  Assert
+        //Assert.Null(result);
+
+        Assert.Equal("null", result);
+    }
 }

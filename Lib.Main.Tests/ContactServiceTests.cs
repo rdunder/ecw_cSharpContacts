@@ -18,7 +18,6 @@ public class ContactServiceTests
         _sut = new ContactService(fileServiceMock.Object);
     }
 
-    //  Add Assert that this returns true
     [Fact]
     public void AddContact_ShouldAddContactToList()
     {
@@ -33,17 +32,17 @@ public class ContactServiceTests
         };
 
         //  Act
-        _sut.AddContact(contactFormModel);
+        bool result = _sut.AddContact(contactFormModel);
 
         //  Assert
         var contacts = _sut.GetAllContacts();
+        Assert.True(result);
         Assert.Equal(contacts.First().FirstName, contactFormModel.FirstName);
         
     }
 
-    //  This test has to be change, the funktion should return a bool so its easier to test.
     [Fact]
-    public void AddContact_ShouldCatchExceptionBecauseOfFileService()
+    public void AddContact_ShouldReturnFalseBecauseOfFileService()
     {
         //  Arrange
         fileServiceMock.Setup(fs => fs.WriteContentToFile(It.IsAny<string>())).Returns(false);
@@ -55,9 +54,11 @@ public class ContactServiceTests
             Email = "test@domain.com",
         };
 
+        //  Act
+        var result = _sut.AddContact(contactFormModel);
 
         //  Act & Assert
-        Assert.ThrowsAny<Exception>(() => _sut.AddContact(contactFormModel));
+        Assert.False(result);
     }
 
     [Fact]

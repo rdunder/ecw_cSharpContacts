@@ -19,18 +19,33 @@ public class ContactService : IContactService
 
 
 
-    public void AddContact(ContactFormModel contactForm)
+
+    //  save json in a variable, in a try/catch, then use if statement on fileservice
+    //  change this method to return a bool.
+    //  Test if email already exists, then return false
+    //  Maybe create a model that reps return object with error message?
+    //
+    //
+    public bool AddContact(ContactFormModel contactForm)
     {
         ContactEntity contactEntity = ContactFactory.Create(contactForm);
         contactEntity.Id = Guid.NewGuid();
         _contacts.Add(contactEntity);
-        
-        //  save json in a variable, in a try/catch, then use if statement on fileservice
-        //  change this method to return a bool.
-        if (!_fileService.WriteContentToFile(ContactJsonSerializer.Serialize(_contacts)))
+
+        try
         {
-            throw new IOException("Errors in FileService.WriteContentToFile");
+            var jsonString = ContactJsonSerializer.Serialize(_contacts);
+            if (!_fileService.WriteContentToFile(jsonString))
+            {
+                return false;
+            }
         }
+        catch (Exception ex)
+        {
+            Debug.WriteLine("ContactService.AddContact: Errors with json serialize" + ex.Message);
+            return false;
+        }
+        return true;
     }
 
     public IEnumerable<ContactModel> GetAllContacts()
@@ -45,17 +60,11 @@ public class ContactService : IContactService
 
     public ContactModel GetContactById(Guid id)
     {
-        throw new NotImplementedException();
-        //try
-        //{
-        //    //  Update _contacts from repo and send user back according to ID
-        //    return ContactFactory.Create(_contacts.Where(contact => contact.Id == id).FirstOrDefault());
-        //}
-        //catch (Exception ex)
-        //{
-        //    Debug.WriteLine($"You got errors in ContactService.GetContactById: {ex.Message}");
-        //    return new ContactModel();
-        //}        
+        var entity = _contacts.FirstOrDefault(contact => contact.Id == id);
+        if (entity != null)
+            return ContactFactory.Create(entity);
+
+        return null!;      
     }
 
     public bool RemoveContact(Guid id)

@@ -6,7 +6,7 @@ namespace Lib.Main.Interfaces;
 
 public interface IContactService
 {
-    public void AddContact(ContactFormModel contactForm);
+    public bool AddContact(ContactFormModel contactForm);
     public IEnumerable<ContactModel> GetAllContacts();
     public ContactModel GetContactById(Guid id);
     public bool RemoveContact(Guid id);
