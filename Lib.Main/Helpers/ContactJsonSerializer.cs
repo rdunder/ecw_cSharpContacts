@@ -23,20 +23,8 @@ public static class ContactJsonSerializer
 
     public static string Serialize(List<ContactEntity> list)
     {
-        //if (list == null)
-        //{
-        //    Debug.WriteLine("ContactJsonSerializer.Serialize: Parameter List is Null!");
-        //    return null!;
-        //}
 
-        try
-        {
-            return JsonSerializer.Serialize(list);
-        }
-        catch (Exception ex)
-        {
-            Debug.WriteLine("You got errors in json serialize: " + ex.Message);
-            return null!;
-        }
+        return JsonSerializer.Serialize(list) ?? null!;
+
     }
 }

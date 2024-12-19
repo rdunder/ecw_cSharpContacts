@@ -21,12 +21,7 @@ public class ContactService : IContactService
 
 
 
-    //  save json in a variable, in a try/catch, then use if statement on fileservice
-    //  change this method to return a bool.
-    //  Test if email already exists, then return false
-    //  Maybe create a model that reps return object with error message?
-    //
-    //
+   
     public bool AddContact(ContactFormModel contactForm)
     {
         if (_contacts.Any(c => c.Email == contactForm.Email)) return false;
@@ -35,30 +30,14 @@ public class ContactService : IContactService
         contactEntity.Id = Guid.NewGuid();
         _contacts.Add(contactEntity);
 
-        try
-        {
-            var jsonString = ContactJsonSerializer.Serialize(_contacts);
-            if (!_fileService.WriteContentToFile(jsonString))
-            {
-                return false;
-            }
-        }
-        catch (Exception ex)
-        {
-            Debug.WriteLine("ContactService.AddContact: Errors with json serialize" + ex.Message);
-            return false;
-        }
+        if (!SaveContactsToFile()) return false;
+
         return true;
     }
 
     public IEnumerable<ContactModel> GetAllContacts()
     {
-        List<ContactModel> returnContacts = new List<ContactModel>();
-        foreach (ContactEntity contactEntity in _contacts)
-        {
-            returnContacts.Add(ContactFactory.Create(contactEntity));
-        }
-        return returnContacts;
+        return _contacts.Select(entity => ContactFactory.Create(entity)).ToList();
     }
 
     public ContactModel GetContactById(Guid id)
@@ -72,31 +51,24 @@ public class ContactService : IContactService
 
     public bool RemoveContact(Guid id)
     {
-        if (!_contacts.Any(_contact => _contact.Id == id)) return false;
-
-        try
-        {
-            _contacts.RemoveAll(entity => entity.Id == id);
-            var jsonString = ContactJsonSerializer.Serialize(_contacts);
-
-            if (!_fileService.WriteContentToFile(jsonString))
-            {
-                return false;
-            }
-        }
-        catch
-        {
+        if (!_contacts.Any(_contact => _contact.Id == id)) 
             return false;
-        }
+
+        _contacts.RemoveAll(entity => entity.Id == id);
+
+        if (!SaveContactsToFile()) 
+            return false;
 
         return true;
     }
 
     public bool UpdateContact(Guid id, ContactFormModel contactForm)
     {
-        if (!_contacts.Any(contact => contact.Id == id)) return false;
+        if (!_contacts.Any(contact => contact.Id == id)) 
+            return false;
 
         var entity = _contacts.Where(e => e.Id == id).FirstOrDefault();
+
         if (entity == null)
             return false;
 
@@ -108,6 +80,14 @@ public class ContactService : IContactService
         entity.PostalCode   = string.IsNullOrEmpty(contactForm.PostalCode)  ? entity.PostalCode    : contactForm.PostalCode;
         entity.City         = string.IsNullOrEmpty(contactForm.City)        ? entity.City          : contactForm.City;
 
+        if (!SaveContactsToFile()) 
+            return false;
+
+        return true;
+    }
+
+    private bool SaveContactsToFile()
+    {
         var jsonString = ContactJsonSerializer.Serialize(_contacts);
 
         if (!_fileService.WriteContentToFile(jsonString))
