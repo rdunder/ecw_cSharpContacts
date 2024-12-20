@@ -6,33 +6,42 @@ namespace UI.Maui.Main.Views;
 
 public partial class ContactsPage : ContentPage
 {
-	private readonly IContactService _contactService;
+    private readonly IContactService _contactService;
 
-	public ContactsPage(IContactService contactService)
-	{
-		InitializeComponent();
-		_contactService = contactService;
-		var contacts = _contactService.GetAllContacts();
-        ContactsCollection.ItemsSource = contacts;
-	}
+    public ContactsPage(IContactService contactService)
+    {
+        InitializeComponent();
 
+        _contactService = contactService;
+        var contacts = _contactService.GetAllContacts();
+        ContactsListView.ItemsSource = contacts;
+    }
 
 
 
     private void btnAddContact_Clicked(object sender, EventArgs e)
     {
-		Shell.Current.GoToAsync(nameof(AddContactPage));
+        Shell.Current.GoToAsync(nameof(AddContactPage));
     }
 
-
-    //  Send Selected contact to EditContactPage on the event of selecting a contact from the collectionview
-    private void ContactsCollection_SelectionChanged(object sender, SelectionChangedEventArgs e)
+    private void ContactsListView_ItemSelected(object sender, SelectedItemChangedEventArgs e)
     {
-        var selectedContact = e.CurrentSelection.FirstOrDefault() as ContactModel ?? new ContactModel();
-        var navParam = new ShellNavigationQueryParameters
+        if (ContactsListView.SelectedItem != null)
         {
-            {"SelectedContact", selectedContact }
-        };
-        Shell.Current.GoToAsync(nameof(EditContactPage), navParam);
+            var selectedContact = e.SelectedItem as ContactModel ?? new ContactModel();
+            var navParam = new ShellNavigationQueryParameters
+            {
+                {"SelectedContact", selectedContact }
+            };
+            Shell.Current.GoToAsync(nameof(EditContactPage), navParam);
+        }
+    }
+
+    private void ContactsListView_ItemTapped(object sender, ItemTappedEventArgs e)
+    {
+        ContactsListView.SelectedItem = null;
     }
 }
+
+
+    

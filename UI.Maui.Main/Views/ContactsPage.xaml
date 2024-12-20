@@ -8,49 +8,39 @@
 
         <Button x:Name="btnAddContact" Clicked="btnAddContact_Clicked" Text="Add Contact"  VerticalOptions="Center" Padding="20" />
 
-
-        <CollectionView
-            x:Name="ContactsCollection"
+        <ListView 
+            x:Name="ContactsListView"
             BackgroundColor="Transparent"
-            SelectionMode="Single"
-            SelectionChanged="ContactsCollection_SelectionChanged">
+            SeparatorVisibility="None"
+            HasUnevenRows="True"
+            RowHeight="60"
+            
+            ItemSelected="ContactsListView_ItemSelected"
+            ItemTapped="ContactsListView_ItemTapped"
+            >   
 
-            <CollectionView.ItemsLayout>
-                <LinearItemsLayout Orientation="Vertical" ItemSpacing="2" />
-            </CollectionView.ItemsLayout>
-
-            <CollectionView.ItemTemplate>
+            <ListView.ItemTemplate>
                 <DataTemplate>
-                    <Grid
-                        HeightRequest="60"
-                        Padding="10">
-                        
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="*"/>
-                        <RowDefinition Height="*"/>
-                    </Grid.RowDefinitions>
+                    <ViewCell>
+                        <StackLayout Orientation="Vertical">
+                            <Border
+                                Stroke="Silver"
+                                StrokeThickness="1"
+                                StrokeShape="RoundRectangle 5"
+                                VerticalOptions="FillAndExpand"
+                                HorizontalOptions="FillAndExpand"
+                                Margin="5">
 
-                    <Label 
-                        Grid.Row="0"
-                        Text="{Binding FullName}"
-                        FontSize="16"/>
-                    <Label 
-                        Grid.Row="1"
-                        Text="{Binding Email}"
-                        FontSize="14"
-                        TextColor="Gray"/>
+                                <Label Text="{Binding FullName}"  VerticalOptions="Center" Padding="10"/>
 
-                    <!-- Separator line -->
-                    <BoxView 
-                        Grid.Row="1"
-                        HeightRequest="1"
-                        Color="Silver"
-                        VerticalOptions="End"/>
-                    </Grid>
-                </DataTemplate>
-            </CollectionView.ItemTemplate>
-        </CollectionView>
+                            </Border>
+                        </StackLayout>
+                    </ViewCell>
+                </DataTemplate>                
+            </ListView.ItemTemplate>
+        </ListView>
 
-
+        
+        
     </VerticalStackLayout>
 </ContentPage>
