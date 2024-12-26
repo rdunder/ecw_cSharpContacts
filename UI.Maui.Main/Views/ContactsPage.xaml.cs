@@ -1,5 +1,6 @@
 using Lib.Main.Interfaces;
 using Lib.Main.Models;
+using System.Collections.ObjectModel;
 using System.Diagnostics;
 
 namespace UI.Maui.Main.Views;
@@ -7,14 +8,19 @@ namespace UI.Maui.Main.Views;
 public partial class ContactsPage : ContentPage
 {
     private readonly IContactService _contactService;
+    private ObservableCollection<ContactModel> _contacts = new();
 
     public ContactsPage(IContactService contactService)
     {
         InitializeComponent();
-
         _contactService = contactService;
-        var contacts = _contactService.GetAllContacts();
-        ContactsListView.ItemsSource = contacts;
+    }
+
+    protected override void OnAppearing()
+    {
+        base.OnAppearing();
+        _contacts = new ObservableCollection<ContactModel>( _contactService.GetAllContacts() );
+        ContactsListView.ItemsSource = _contacts;
     }
 
 
@@ -33,7 +39,7 @@ public partial class ContactsPage : ContentPage
             {
                 {"SelectedContact", selectedContact }
             };
-            Shell.Current.GoToAsync(nameof(EditContactPage), navParam);
+            Shell.Current.GoToAsync(nameof(ShowContactDetailsPage), navParam);
         }
     }
 
@@ -41,7 +47,11 @@ public partial class ContactsPage : ContentPage
     {
         ContactsListView.SelectedItem = null;
     }
+
+    private void SearchBar_TextChanged(object sender, TextChangedEventArgs e)
+    {
+        ContactsListView.ItemsSource = _contacts.Where(x => x.LastName.StartsWith(searchBar.Text, StringComparison.OrdinalIgnoreCase)).ToList();
+    }
 }
 
 
-    

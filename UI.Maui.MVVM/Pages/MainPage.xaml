@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="UI.Maui.MVVM.Pages.MainPage"
+             Title="MainPage">
+    
+    <ListView ItemsSource="{Binding Contacts}">
+        <ListView.ItemTemplate>
+            <DataTemplate>
+                <ViewCell>
+                    <VerticalStackLayout>
+                        <HorizontalStackLayout>
+                            <Label Text="{Binding FirstName}" />
+                            <Label Text="{Binding LastName}" />
+                        </HorizontalStackLayout>
+                        <Label Text="{Binding Email}" />
+                    </VerticalStackLayout>
+                </ViewCell>
+            </DataTemplate>
+        </ListView.ItemTemplate>
+    </ListView>
+    
+</ContentPage>

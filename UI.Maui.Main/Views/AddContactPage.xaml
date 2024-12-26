@@ -3,12 +3,46 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="UI.Maui.Main.Views.AddContactPage"
              Title="Add Contact">
-    <VerticalStackLayout Padding="10">
-        <Button x:Name="btnSave" Text="Save" Clicked="btnSave_Clicked" />
-        <Button x:Name="btnCancel" Text="Cancel" Clicked="btnCancel_Clicked" />
-        <Label 
-            Text="Add new contact"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" />
+    <VerticalStackLayout Padding="10" Spacing="50">
+        
+        
+        
+        <!-- Input Group-->
+        <VerticalStackLayout Spacing="10" Margin="0, 30, 0, 0" HorizontalOptions="Center">            
+            <HorizontalStackLayout>
+                <Label Text="First Name" VerticalOptions="Center" WidthRequest="100"></Label>
+                <Entry VerticalOptions="Center" ></Entry>
+            </HorizontalStackLayout>
+            <HorizontalStackLayout>
+                <Label Text="Last Name" VerticalOptions="Center" WidthRequest="100"></Label>
+                <Entry VerticalOptions="Center"></Entry>
+            </HorizontalStackLayout>
+            <HorizontalStackLayout>
+                <Label Text="Email" VerticalOptions="Center" WidthRequest="100"></Label>
+                <Entry VerticalOptions="Center"></Entry>
+            </HorizontalStackLayout>
+            <HorizontalStackLayout>
+                <Label Text="Phonenumber" VerticalOptions="Center" WidthRequest="100"></Label>
+                <Entry VerticalOptions="Center"></Entry>
+            </HorizontalStackLayout>
+            <HorizontalStackLayout>
+                <Label Text="Address" VerticalOptions="Center" WidthRequest="100"></Label>
+                <Entry VerticalOptions="Center"></Entry>
+            </HorizontalStackLayout>
+            <HorizontalStackLayout>
+                <Label Text="Postal Code" VerticalOptions="Center" WidthRequest="100"></Label>
+                <Entry VerticalOptions="Center"></Entry>
+            </HorizontalStackLayout>
+            <HorizontalStackLayout>
+                <Label Text="City" VerticalOptions="Center" WidthRequest="100"></Label>
+                <Entry VerticalOptions="Center"></Entry>
+            </HorizontalStackLayout>
+        </VerticalStackLayout>
+    
+        <HorizontalStackLayout HorizontalOptions="Center" Spacing="50">
+            <Button x:Name="btnSave" Text="Save" Clicked="btnSave_Clicked" WidthRequest="150"/>
+            <Button x:Name="btnCancel" Text="Cancel" Clicked="btnCancel_Clicked" WidthRequest="150"/>
+        </HorizontalStackLayout>
+
     </VerticalStackLayout>
 </ContentPage>

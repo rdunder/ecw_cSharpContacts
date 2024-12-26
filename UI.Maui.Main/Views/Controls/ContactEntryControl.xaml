@@ -1,13 +1,10 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+<ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
-             xmlns:controls="clr-namespace:UI.Maui.Main.Views.Controls"
-             x:Class="UI.Maui.Main.Views.EditContactPage"
-             Title="EditContactPage">
+             x:Class="UI.Maui.Main.Views.Controls.ContactEntryControl">
     
     
-   
     <VerticalStackLayout Padding="10" Spacing="50">
         <Label x:Name="feedback" Text=""></Label>
 
@@ -20,24 +17,24 @@
                 <Entry x:Name="firstName" VerticalOptions="Center" >
                     <Entry.Behaviors>
                         <toolkit:TextValidationBehavior
-                            x:Name="firstNameValidator"                            
-                            Flags="ValidateOnAttaching,ValidateOnValueChanged"
-                            MinimumLength="2"
-                            />
+                        x:Name="firstNameValidator"                            
+                        Flags="ValidateOnAttaching,ValidateOnValueChanged"
+                        MinimumLength="2"
+                        />
                     </Entry.Behaviors>
-                </Entry>                
+                </Entry>
             </HorizontalStackLayout>
-            
+
             <!-- Last Name Input -->
             <HorizontalStackLayout>
                 <Label Text="Last Name" VerticalOptions="Center" WidthRequest="100"></Label>
                 <Entry x:Name="lastName" VerticalOptions="Center">
                     <Entry.Behaviors>
                         <toolkit:TextValidationBehavior
-                            x:Name="lastNameValidator"                            
-                            Flags="ValidateOnAttaching,ValidateOnValueChanged"
-                            MinimumLength="2"
-                            />
+                        x:Name="lastNameValidator"                            
+                        Flags="ValidateOnAttaching,ValidateOnValueChanged"
+                        MinimumLength="2"
+                        />
                     </Entry.Behaviors>
                 </Entry>
             </HorizontalStackLayout>
@@ -48,17 +45,17 @@
                 <Entry x:Name="email" VerticalOptions="Center">
                     <Entry.Behaviors>
                         <toolkit:MultiValidationBehavior
-                            x:Name="emailValidator"
-                            Flags="ValidateOnAttaching,ValidateOnValueChanged" >
+                        x:Name="emailValidator"
+                        Flags="ValidateOnAttaching,ValidateOnValueChanged" >
                             <toolkit:TextValidationBehavior                           
-                                Flags="ValidateOnAttaching,ValidateOnValueChanged"
-                                MinimumLength="1"
-                                toolkit:MultiValidationBehavior.Error="Email is required."
-                                />
+                            Flags="ValidateOnAttaching,ValidateOnValueChanged"
+                            MinimumLength="1"
+                            toolkit:MultiValidationBehavior.Error="Email is required."
+                            />
                             <toolkit:EmailValidationBehavior
-                                Flags="ValidateOnAttaching,ValidateOnValueChanged"
-                                toolkit:MultiValidationBehavior.Error="Email format is invalid."
-                                />
+                            Flags="ValidateOnAttaching,ValidateOnValueChanged"
+                            toolkit:MultiValidationBehavior.Error="Email format is invalid."
+                            />
 
                         </toolkit:MultiValidationBehavior>
                     </Entry.Behaviors>
@@ -83,11 +80,9 @@
         </VerticalStackLayout>
 
         <HorizontalStackLayout HorizontalOptions="Center" Spacing="50">
-            <Button x:Name="btnSave" Text="Save" Clicked="btnSave_Clicked" WidthRequest="150"/>
-            <Button x:Name="btnCancel" Text="Cancel" Clicked="btnCancel_Clicked" WidthRequest="150"/>
+            <Button x:Name="btnSave" Text="Save" Clicked="btnSave_Clicked"  WidthRequest="150"/>
+            <Button x:Name="btnCancel" Text="Cancel" Clicked="btnCancel_Clicked"  WidthRequest="150"/>
         </HorizontalStackLayout>
 
     </VerticalStackLayout>
-    
-    
-</ContentPage>
+</ContentView>

@@ -8,6 +8,14 @@
 
         <Button x:Name="btnAddContact" Clicked="btnAddContact_Clicked" Text="Add Contact"  VerticalOptions="Center" Padding="20" />
 
+        <SearchBar
+            x:Name="searchBar"
+            Placeholder="Search Contact"
+            TextChanged="SearchBar_TextChanged"
+            >
+            
+        </SearchBar>
+        
         <ListView 
             x:Name="ContactsListView"
             BackgroundColor="Transparent"

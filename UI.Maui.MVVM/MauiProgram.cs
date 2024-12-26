@@ -1,10 +1,10 @@
-﻿using Microsoft.Extensions.Logging;
-using CommunityToolkit.Maui;
-using Lib.Main.Interfaces;
-using Lib.Main.Factories;
+﻿using Lib.Main.Interfaces;
 using Lib.Main.Services;
+using Microsoft.Extensions.Logging;
+using UI.Maui.MVVM.Pages;
+using UI.Maui.MVVM.ViewModels;
 
-namespace UI.Maui.Main
+namespace UI.Maui.MVVM
 {
     public static class MauiProgram
     {
@@ -13,7 +13,6 @@ namespace UI.Maui.Main
             var builder = MauiApp.CreateBuilder();
             builder
                 .UseMauiApp<App>()
-                .UseMauiCommunityToolkit()
                 .ConfigureFonts(fonts =>
                 {
                     fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
@@ -21,9 +20,10 @@ namespace UI.Maui.Main
                 });
 
 
-#if DEBUG
-    		builder.Logging.AddDebug();
-#endif
+            builder.Services.AddSingleton<MainPage>();
+            builder.Services.AddSingleton<MainPageViewModel>();
+
+
 
             builder.Services.AddSingleton<IFileService, ContactFileService>(fs =>
                 new ContactFileService(
@@ -31,6 +31,13 @@ namespace UI.Maui.Main
                     "Database.json"
                 ));
             builder.Services.AddSingleton<IContactService, ContactService>();
+
+
+
+
+#if DEBUG
+            builder.Logging.AddDebug();
+#endif
 
             return builder.Build();
         }

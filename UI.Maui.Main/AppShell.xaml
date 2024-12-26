@@ -13,10 +13,4 @@
         ContentTemplate="{DataTemplate views:ContactsPage}"
         Route="ContactsPage" />
 
-    <ShellContent
-        Title="Add Contact"
-        ContentTemplate="{DataTemplate views:AddContactPage}"
-        Route="AddContactPage" />
-
-
 </Shell>
