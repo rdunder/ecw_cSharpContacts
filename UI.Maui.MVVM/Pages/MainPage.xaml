@@ -3,21 +3,45 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="UI.Maui.MVVM.Pages.MainPage"
              Title="MainPage">
+
     
-    <ListView ItemsSource="{Binding Contacts}">
-        <ListView.ItemTemplate>
-            <DataTemplate>
-                <ViewCell>
-                    <VerticalStackLayout>
-                        <HorizontalStackLayout>
-                            <Label Text="{Binding FirstName}" />
-                            <Label Text="{Binding LastName}" />
-                        </HorizontalStackLayout>
-                        <Label Text="{Binding Email}" />
-                    </VerticalStackLayout>
-                </ViewCell>
-            </DataTemplate>
-        </ListView.ItemTemplate>
-    </ListView>
+    <Grid RowDefinitions="auto, auto">
+
+        <Button
+            Grid.Row="0"
+            Text="+ Add Contact" 
+            x:Name="btnGoToAddContact" 
+            Clicked="btnGoToAddContact_Clicked" 
+            HeightRequest="70"/>
+
+        <CollectionView ItemsSource="{Binding Contacts}" Grid.Row="1" SelectionMode="Single">
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+
+                    <Grid ColumnDefinitions="*, auto" Padding="20, 5, 20, 5">
+                        <VerticalStackLayout Grid.Column="0">
+                            <Label Text="{Binding FullName}" FontSize="18"/>
+                            <Label Text="{Binding Email}" />
+                        </VerticalStackLayout>
+                        <Button Text="X" Grid.Column="1" />
+                    </Grid>
+                    
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+
+        <!--<ScrollView Grid.Row="1" VerticalOptions="FillAndExpand">
+            <ListView ItemsSource="{Binding Contacts}">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        
+                        
+                        
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </ScrollView>-->
+
+    </Grid>
     
 </ContentPage>

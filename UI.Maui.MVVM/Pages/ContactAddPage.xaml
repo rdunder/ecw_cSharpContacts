@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="UI.Maui.MVVM.Pages.ContactAddPage"
+             
+             xmlns:viewmodel="clr-namespace:UI.Maui.MVVM.ViewModels"
+             x:DataType="{x:Type viewmodel:ContactAddPageViewModel}"
+             
+             Title="ContactAddPage">
+
+
+    <ScrollView>
+        <VerticalStackLayout Padding="10" Spacing="50">
+
+            <!-- Input Group-->
+            <VerticalStackLayout Spacing="10" Margin="0, 30, 0, 0" HorizontalOptions="Center">
+                <HorizontalStackLayout>
+                    <Label Text="First Name" ></Label>
+                    <Entry Text="{Binding ContactForm.FirstName}"/>
+                </HorizontalStackLayout>
+                <HorizontalStackLayout>
+                    <Label Text="Last Name" VerticalOptions="Center" WidthRequest="100"></Label>
+                    <Entry VerticalOptions="Center" Text="{Binding ContactForm.LastName}"/>
+                </HorizontalStackLayout>
+                <HorizontalStackLayout>
+                    <Label Text="Email" VerticalOptions="Center" WidthRequest="100"></Label>
+                    <Entry VerticalOptions="Center" Text="{Binding ContactForm.Email}"/>
+                </HorizontalStackLayout>
+                <HorizontalStackLayout>
+                    <Label Text="Phonenumber" VerticalOptions="Center" WidthRequest="100"></Label>
+                    <Entry VerticalOptions="Center" Text="{Binding ContactForm.PhoneNumber}"/>
+                </HorizontalStackLayout>
+                <HorizontalStackLayout>
+                    <Label Text="Address" VerticalOptions="Center" WidthRequest="100"></Label>
+                    <Entry VerticalOptions="Center" Text="{Binding ContactForm.PostalCode}"/>
+                </HorizontalStackLayout>
+                <HorizontalStackLayout>
+                    <Label Text="Postal Code" VerticalOptions="Center" WidthRequest="100"></Label>
+                    <Entry VerticalOptions="Center" Text="{Binding ContactForm.Address}"/>
+                </HorizontalStackLayout>
+                <HorizontalStackLayout>
+                    <Label Text="City" VerticalOptions="Center" WidthRequest="100"></Label>
+                    <Entry VerticalOptions="Center" Text="{Binding ContactForm.City}"/>
+                </HorizontalStackLayout>
+            </VerticalStackLayout>
+
+            <HorizontalStackLayout HorizontalOptions="Center" Spacing="50">
+                <Button  Text="Save"  WidthRequest="150" Command="{Binding AddContactCommand}" />
+                <Button  Text="Cancel"  WidthRequest="150" x:Name="btnCancel" Clicked="btnCancel_Clicked" />
+            </HorizontalStackLayout>
+
+        </VerticalStackLayout>
+    </ScrollView>
+
+
+</ContentPage>

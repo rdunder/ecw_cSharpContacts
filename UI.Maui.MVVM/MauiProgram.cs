@@ -20,8 +20,10 @@ namespace UI.Maui.MVVM
                 });
 
 
-            builder.Services.AddSingleton<MainPage>();
-            builder.Services.AddSingleton<MainPageViewModel>();
+            builder.Services.AddTransient<MainPage>();
+            builder.Services.AddTransient<MainPageViewModel>();
+            builder.Services.AddTransient<ContactAddPage>();
+            builder.Services.AddTransient<ContactAddPageViewModel>();
 
 
 

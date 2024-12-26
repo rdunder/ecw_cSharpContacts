@@ -1,9 +1,11 @@
 ﻿
 
 using CommunityToolkit.Mvvm.ComponentModel;
+using CommunityToolkit.Mvvm.Input;
 using Lib.Main.Interfaces;
 using Lib.Main.Models;
 using System.Collections.ObjectModel;
+using System.Diagnostics;
 
 namespace UI.Maui.MVVM.ViewModels;
 
@@ -14,18 +16,25 @@ public partial class MainPageViewModel : ObservableObject
     [ObservableProperty]
     private ObservableCollection<ContactModel> _contacts = new();
 
+
     public MainPageViewModel(IContactService contactService)
     {
         _contactService = contactService;
         LoadContacts();
     }
 
+
+
+
+
     private void LoadContacts()
     {
-        var contacts = _contactService.GetAllContacts();
-        foreach (var contact in contacts)
-        {
-            _contacts.Add(contact);
-        }
+        _contacts = new( _contactService.GetAllContacts() );
+    }
+
+    [RelayCommand]
+    public void AddFromMainPage()
+    {
+        Debug.WriteLine("running methods across pages");
     }
 }
