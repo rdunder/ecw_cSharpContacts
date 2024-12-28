@@ -16,6 +16,7 @@ public partial class ContactAddPageViewModel : ObservableObject
     [ObservableProperty]
     private ContactFormModel _contactForm = ContactFactory.Create();
 
+
     public ContactAddPageViewModel(IContactService contactService)
     {
         _contactService = contactService;
@@ -32,7 +33,7 @@ public partial class ContactAddPageViewModel : ObservableObject
             if (_contactService.AddContact(ContactForm))
             {
                 ContactForm = ContactFactory.Create();
-                await Shell.Current.GoToAsync("..");
+                await Shell.Current.GoToAsync(nameof(MainPage));
             }
             else
             {

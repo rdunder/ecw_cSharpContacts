@@ -13,35 +13,35 @@
         <VerticalStackLayout Padding="10" Spacing="50">
 
             <!-- Input Group-->
-            <VerticalStackLayout Spacing="10" Margin="0, 30, 0, 0" HorizontalOptions="Center">
-                <HorizontalStackLayout>
-                    <Label Text="First Name" ></Label>
+            <VerticalStackLayout Spacing="10" Margin="0, 30, 0, 0" >
+                <VerticalStackLayout>
+                    <Label Text="First Name" />
                     <Entry Text="{Binding ContactForm.FirstName}"/>
-                </HorizontalStackLayout>
-                <HorizontalStackLayout>
-                    <Label Text="Last Name" VerticalOptions="Center" WidthRequest="100"></Label>
+                </VerticalStackLayout>
+                <VerticalStackLayout>
+                    <Label Text="Last Name" />
                     <Entry VerticalOptions="Center" Text="{Binding ContactForm.LastName}"/>
-                </HorizontalStackLayout>
-                <HorizontalStackLayout>
-                    <Label Text="Email" VerticalOptions="Center" WidthRequest="100"></Label>
+                </VerticalStackLayout>
+                <VerticalStackLayout>
+                    <Label Text="Email" />
                     <Entry VerticalOptions="Center" Text="{Binding ContactForm.Email}"/>
-                </HorizontalStackLayout>
-                <HorizontalStackLayout>
-                    <Label Text="Phonenumber" VerticalOptions="Center" WidthRequest="100"></Label>
+                </VerticalStackLayout>
+                <VerticalStackLayout>
+                    <Label Text="Phonenumber" />
                     <Entry VerticalOptions="Center" Text="{Binding ContactForm.PhoneNumber}"/>
-                </HorizontalStackLayout>
-                <HorizontalStackLayout>
-                    <Label Text="Address" VerticalOptions="Center" WidthRequest="100"></Label>
+                </VerticalStackLayout>
+                <VerticalStackLayout>
+                    <Label Text="Address" />
                     <Entry VerticalOptions="Center" Text="{Binding ContactForm.PostalCode}"/>
-                </HorizontalStackLayout>
-                <HorizontalStackLayout>
-                    <Label Text="Postal Code" VerticalOptions="Center" WidthRequest="100"></Label>
+                </VerticalStackLayout>
+                <VerticalStackLayout>
+                    <Label Text="Postal Code" />
                     <Entry VerticalOptions="Center" Text="{Binding ContactForm.Address}"/>
-                </HorizontalStackLayout>
-                <HorizontalStackLayout>
-                    <Label Text="City" VerticalOptions="Center" WidthRequest="100"></Label>
+                </VerticalStackLayout>
+                <VerticalStackLayout>
+                    <Label Text="City" />
                     <Entry VerticalOptions="Center" Text="{Binding ContactForm.City}"/>
-                </HorizontalStackLayout>
+                </VerticalStackLayout>
             </VerticalStackLayout>
 
             <HorizontalStackLayout HorizontalOptions="Center" Spacing="50">

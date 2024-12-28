@@ -20,6 +20,10 @@ namespace UI.Maui.MVVM
                 });
 
 
+
+
+            builder.Logging.AddDebug();
+
             builder.Services.AddTransient<MainPage>();
             builder.Services.AddTransient<MainPageViewModel>();
             builder.Services.AddTransient<ContactAddPage>();
@@ -37,9 +41,7 @@ namespace UI.Maui.MVVM
 
 
 
-#if DEBUG
-            builder.Logging.AddDebug();
-#endif
+
 
             return builder.Build();
         }

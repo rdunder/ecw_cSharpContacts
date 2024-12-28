@@ -2,46 +2,45 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="UI.Maui.MVVM.Pages.MainPage"
+             xmlns:viewmodel="clr-namespace:UI.Maui.MVVM.ViewModels"
+             x:DataType="{x:Type viewmodel:MainPageViewModel}"
              Title="MainPage">
-
     
-    <Grid RowDefinitions="auto, auto">
-
-        <Button
-            Grid.Row="0"
-            Text="+ Add Contact" 
-            x:Name="btnGoToAddContact" 
-            Clicked="btnGoToAddContact_Clicked" 
-            HeightRequest="70"/>
-
-        <CollectionView ItemsSource="{Binding Contacts}" Grid.Row="1" SelectionMode="Single">
+    
+    <Grid RowDefinitions="auto, *">
+        
+        <VerticalStackLayout Grid.Row="0" Spacing="5" Padding="10">
+            <Button 
+                Grid.Row="0" 
+                Text="+ Add Contact" 
+                HeightRequest="70" 
+                BackgroundColor="DarkOliveGreen" 
+                Clicked="btnGoToAddContact_Clicked"/>
+            <SearchBar 
+                x:Name="searchBar"
+                Placeholder="Search Contact"
+                HeightRequest="50" />
+        </VerticalStackLayout>
+        
+        <CollectionView 
+            ItemsSource="{Binding Contacts}"  
+            SelectionMode="Single" 
+            Grid.Row="1" >
+            
             <CollectionView.ItemTemplate>
                 <DataTemplate>
 
-                    <Grid ColumnDefinitions="*, auto" Padding="20, 5, 20, 5">
-                        <VerticalStackLayout Grid.Column="0">
-                            <Label Text="{Binding FullName}" FontSize="18"/>
-                            <Label Text="{Binding Email}" />
-                        </VerticalStackLayout>
-                        <Button Text="X" Grid.Column="1" />
-                    </Grid>
-                    
+                    <VerticalStackLayout Spacing="5" Padding="10">
+                        <Label Text="{Binding FullName}" FontSize="18"/>
+                        <Label Text="{Binding Email}" FontSize="12" />
+                        <BoxView HeightRequest="1" Color="DarkOliveGreen" Grid.Column="1" />
+                    </VerticalStackLayout>
+
+
                 </DataTemplate>
             </CollectionView.ItemTemplate>
         </CollectionView>
-
-        <!--<ScrollView Grid.Row="1" VerticalOptions="FillAndExpand">
-            <ListView ItemsSource="{Binding Contacts}">
-                <ListView.ItemTemplate>
-                    <DataTemplate>
-                        
-                        
-                        
-                    </DataTemplate>
-                </ListView.ItemTemplate>
-            </ListView>
-        </ScrollView>-->
-
+        
     </Grid>
-    
+
 </ContentPage>

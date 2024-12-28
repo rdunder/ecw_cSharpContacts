@@ -7,16 +7,16 @@
     xmlns:pages="clr-namespace:UI.Maui.MVVM.Pages"
     Shell.FlyoutBehavior="Disabled"
     Shell.NavBarIsVisible="False"
-    Title="UI.Maui.MVVM">
+    Title="Dial Hard">
 
     <ShellContent
         Title="Home"
         ContentTemplate="{DataTemplate pages:MainPage}"
-        Route="MainPage" />
+        Route="Home" />
 
     <ShellContent
         Title="Add Contact"
         ContentTemplate="{DataTemplate pages:ContactAddPage}"
-        Route="ContactAddPage" />
+        Route="AddContact" />
 
 </Shell>

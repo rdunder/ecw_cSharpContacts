@@ -9,6 +9,7 @@ using System.Diagnostics;
 
 namespace UI.Maui.MVVM.ViewModels;
 
+
 public partial class MainPageViewModel : ObservableObject
 {
     private readonly IContactService _contactService;
@@ -23,18 +24,8 @@ public partial class MainPageViewModel : ObservableObject
         LoadContacts();
     }
 
-
-
-
-
     private void LoadContacts()
     {
-        _contacts = new( _contactService.GetAllContacts() );
-    }
-
-    [RelayCommand]
-    public void AddFromMainPage()
-    {
-        Debug.WriteLine("running methods across pages");
+        _contacts = new( _contactService.GetAllContacts().OrderBy(c => c.LastName) );
     }
 }
