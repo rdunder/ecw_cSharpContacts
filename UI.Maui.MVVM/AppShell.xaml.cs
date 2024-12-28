@@ -10,6 +10,7 @@ namespace UI.Maui.MVVM
 
             Routing.RegisterRoute(nameof(MainPage), typeof(MainPage));
             Routing.RegisterRoute(nameof(ContactAddPage), typeof(ContactAddPage));
+            Routing.RegisterRoute(nameof(ContactDetailsPage), typeof(ContactDetailsPage));
         }
     }
 }
