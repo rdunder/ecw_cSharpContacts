@@ -9,4 +9,9 @@ public partial class ContactDetailsPage : ContentPage
 		InitializeComponent();
 		BindingContext = viewModel;
 	}
+
+    private void btnBack_Clicked(object sender, EventArgs e)
+    {
+		Shell.Current.GoToAsync("..");
+    }
 }
