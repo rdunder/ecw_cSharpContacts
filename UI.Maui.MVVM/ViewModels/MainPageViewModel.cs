@@ -20,6 +20,9 @@ public partial class MainPageViewModel : ObservableObject
     [ObservableProperty]
     private ContactModel _selectedContact = new();
 
+    [ObservableProperty]
+    private List<object> _selectedItems = new();
+
 
     public MainPageViewModel(IContactService contactService)
     {
@@ -41,6 +44,7 @@ public partial class MainPageViewModel : ObservableObject
             {
                 {"SelectedContact", _selectedContact }
             };
+
             Shell.Current.GoToAsync(nameof(ContactDetailsPage), navParam);
         }
     }

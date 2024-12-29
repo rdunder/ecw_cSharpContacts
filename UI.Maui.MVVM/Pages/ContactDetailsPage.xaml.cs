@@ -12,6 +12,6 @@ public partial class ContactDetailsPage : ContentPage
 
     private void btnBack_Clicked(object sender, EventArgs e)
     {
-		Shell.Current.GoToAsync("..");
+		Shell.Current.GoToAsync(nameof(MainPage));
     }
 }

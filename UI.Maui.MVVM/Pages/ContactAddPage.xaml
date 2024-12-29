@@ -8,6 +8,10 @@
              
              Title="ContactAddPage">
 
+    <Shell.BackButtonBehavior>
+        <BackButtonBehavior IsVisible="False" IsEnabled="False" />
+    </Shell.BackButtonBehavior>
+
 
     <ScrollView>
         <VerticalStackLayout Padding="10" Spacing="50">

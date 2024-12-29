@@ -6,6 +6,10 @@
              x:DataType="{x:Type viewmodel:ContactDetailsPageViewModel}"
              Title="ContactDetailsPage">
 
+    <Shell.BackButtonBehavior>
+        <BackButtonBehavior IsVisible="False" IsEnabled="False" />
+    </Shell.BackButtonBehavior>
+
     <ScrollView>
 
         <Grid RowDefinitions="auto, auto, auto, auto, auto" Padding="20, 20, 20, 0" RowSpacing="20">

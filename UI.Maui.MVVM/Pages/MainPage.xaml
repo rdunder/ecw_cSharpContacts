@@ -4,11 +4,15 @@
              x:Class="UI.Maui.MVVM.Pages.MainPage"
              xmlns:viewmodel="clr-namespace:UI.Maui.MVVM.ViewModels"
              x:DataType="{x:Type viewmodel:MainPageViewModel}"
-             Title="MainPage">
+             Title="MainPage"             
+             >
+    <Shell.BackButtonBehavior>
+        <BackButtonBehavior IsVisible="False" IsEnabled="False" />
+    </Shell.BackButtonBehavior>
     
     
     <Grid RowDefinitions="auto, *">
-        
+
         <VerticalStackLayout Grid.Row="0" Spacing="5" Padding="10">
             <Button 
                 Grid.Row="0" 
@@ -23,10 +27,12 @@
         </VerticalStackLayout>
 
         <CollectionView
+            x:Name="MainCollectionView"
             ItemsSource="{Binding Contacts}"  
             SelectionMode="Single" 
             Grid.Row="1"
             SelectedItem="{Binding SelectedContact}"
+            SelectedItems="{Binding SelectedItems}"
             SelectionChangedCommand="{Binding ShowContactDetailsCommand}"
             >
 
@@ -43,7 +49,7 @@
                 </DataTemplate>
             </CollectionView.ItemTemplate>
         </CollectionView>
-        
+
     </Grid>
 
 </ContentPage>
