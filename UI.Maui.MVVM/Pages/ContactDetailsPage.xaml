@@ -5,8 +5,37 @@
              xmlns:viewmodel="clr-namespace:UI.Maui.MVVM.ViewModels"
              x:DataType="{x:Type viewmodel:ContactDetailsPageViewModel}"
              Title="ContactDetailsPage">
-    <Grid >
-        <Label Text="{Binding SelectedContact.FullName}" />
 
+    <Grid RowDefinitions="auto, auto, auto, auto" Padding="20, 0, 20, 0" RowSpacing="20">
+        <VerticalStackLayout Grid.Row="0" Padding="0, 40, 0, 40" Spacing="5" >
+            <Label Text="{Binding SelectedContact.FullName}" FontSize="36" HorizontalOptions="Center" />
+            <BoxView BackgroundColor="DarkOliveGreen" HeightRequest="1" />
+
+            <HorizontalStackLayout HorizontalOptions="Center" Spacing="10" Margin="0, 20, 0, 0">
+                <Button Text="Edit" BackgroundColor="DarkOliveGreen"/>
+                <Button Text="Remove" BackgroundColor="Firebrick"/>
+            </HorizontalStackLayout>
+
+        </VerticalStackLayout>
+
+        <VerticalStackLayout Grid.Row="1" >
+            <Label Text="Email" FontSize="24" TextColor="Cornsilk"/>
+            <BoxView BackgroundColor="DarkOliveGreen" HeightRequest="1" />
+            <Label Text="{Binding SelectedContact.Email}" FontSize="16"/>
+        </VerticalStackLayout>
+
+        <VerticalStackLayout Grid.Row="2" >
+            <Label Text="Phone" FontSize="24" TextColor="Cornsilk"/>
+            <BoxView BackgroundColor="DarkOliveGreen" HeightRequest="1" />
+            <Label Text="{Binding SelectedContact.PhoneNumber}" FontSize="16"/>
+        </VerticalStackLayout>
+
+        <VerticalStackLayout Grid.Row="3" >
+            <Label Text="Adress" FontSize="24" TextColor="Cornsilk"/>
+            <BoxView BackgroundColor="DarkOliveGreen" HeightRequest="1" />
+            <Label Text="{Binding SelectedContact.Address}" FontSize="16" />
+            <Label Text="{Binding SelectedContact.PostalCode}" FontSize="16" />
+            <Label Text="{Binding SelectedContact.City}" FontSize="16" />
+        </VerticalStackLayout>
     </Grid>
 </ContentPage>
