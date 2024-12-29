@@ -31,7 +31,7 @@
 
                 <HorizontalStackLayout HorizontalOptions="Center" Spacing="10" Margin="0, 20, 0, 0">
                     <Button Text="Edit" BackgroundColor="DarkOliveGreen"/>
-                    <Button Text="Remove" BackgroundColor="Firebrick"/>
+                    <Button Text="Remove" BackgroundColor="Firebrick" Command="{Binding DeleteContactCommand}"/>
                 </HorizontalStackLayout>
 
             </VerticalStackLayout>
