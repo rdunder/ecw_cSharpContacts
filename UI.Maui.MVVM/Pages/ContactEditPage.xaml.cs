@@ -10,7 +10,7 @@ public partial class ContactEditPage : ContentPage
 		BindingContext = viewModel;
 	}
 
-    private void btnCancel_Clicked(object sender, EventArgs e)
+    public void btnCancel_Clicked(object sender, EventArgs e)
     {
 		Shell.Current.GoToAsync("..");
     }

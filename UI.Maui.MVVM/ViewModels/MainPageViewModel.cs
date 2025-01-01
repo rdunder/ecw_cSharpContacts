@@ -28,6 +28,12 @@ public partial class MainPageViewModel : ObservableObject
     {
         _contactService = contactService;
         LoadContacts();
+
+        var nav = Shell.Current.Navigation;
+        if (nav.NavigationStack.Count() > 2)
+        {
+            nav.PopAsync();
+        }
     }
 
     private void LoadContacts()

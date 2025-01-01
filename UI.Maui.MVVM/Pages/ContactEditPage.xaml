@@ -14,42 +14,42 @@
 
 
     <ScrollView>
-        <Grid RowDefinitions="auto, auto" Padding="20" >
+        <Grid RowDefinitions="auto, auto" Padding="20" RowSpacing="50">
 
             <!-- Input Group-->
             <VerticalStackLayout Grid.Row="0" Spacing="10" Margin="0, 30, 0, 0" >
                 <VerticalStackLayout>
                     <Label Text="First Name" />
-                    <Entry Text="{Binding ContactForm.FirstName}"/>
+                    <Entry Text="{Binding CurrentContact.FirstName}"/>
                 </VerticalStackLayout>
                 <VerticalStackLayout>
                     <Label Text="Last Name" />
-                    <Entry VerticalOptions="Center" Text="{Binding ContactForm.LastName}"/>
+                    <Entry Text="{Binding CurrentContact.LastName}"/>
                 </VerticalStackLayout>
                 <VerticalStackLayout>
                     <Label Text="Email" />
-                    <Entry VerticalOptions="Center" Text="{Binding ContactForm.Email}"/>
+                    <Entry Text="{Binding CurrentContact.Email}"/>
                 </VerticalStackLayout>
                 <VerticalStackLayout>
                     <Label Text="Phonenumber" />
-                    <Entry VerticalOptions="Center" Text="{Binding ContactForm.PhoneNumber}"/>
+                    <Entry Text="{Binding CurrentContact.PhoneNumber}"/>
                 </VerticalStackLayout>
                 <VerticalStackLayout>
                     <Label Text="Address" />
-                    <Entry VerticalOptions="Center" Text="{Binding ContactForm.PostalCode}"/>
+                    <Entry Text="{Binding CurrentContact.Address}"/>
                 </VerticalStackLayout>
                 <VerticalStackLayout>
                     <Label Text="Postal Code" />
-                    <Entry VerticalOptions="Center" Text="{Binding ContactForm.Address}"/>
+                    <Entry Text="{Binding CurrentContact.PostalCode}"/>
                 </VerticalStackLayout>
                 <VerticalStackLayout>
                     <Label Text="City" />
-                    <Entry VerticalOptions="Center" Text="{Binding ContactForm.City}"/>
+                    <Entry Text="{Binding CurrentContact.City}"/>
                 </VerticalStackLayout>
             </VerticalStackLayout>
 
             <HorizontalStackLayout Grid.Row="1" HorizontalOptions="Center" Spacing="50">
-                <Button  Text="Save"  WidthRequest="150" BackgroundColor="DarkOliveGreen" />
+                <Button  Text="Save"  WidthRequest="150" BackgroundColor="DarkOliveGreen" Command="{Binding SaveEditedContactCommand}" />
                 <Button  Text="Cancel"  WidthRequest="150" x:Name="btnCancel" Clicked="btnCancel_Clicked" BackgroundColor="Firebrick" />
             </HorizontalStackLayout>
 

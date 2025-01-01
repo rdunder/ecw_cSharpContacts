@@ -30,7 +30,7 @@
                 <BoxView BackgroundColor="DarkOliveGreen" HeightRequest="1" />
 
                 <HorizontalStackLayout HorizontalOptions="Center" Spacing="10" Margin="0, 20, 0, 0">
-                    <Button Text="Edit" BackgroundColor="DarkOliveGreen"/>
+                    <Button Text="Edit" BackgroundColor="DarkOliveGreen" Command="{Binding EditContactCommand}"/>
                     <Button Text="Remove" BackgroundColor="Firebrick" Command="{Binding DeleteContactCommand}"/>
                 </HorizontalStackLayout>
 

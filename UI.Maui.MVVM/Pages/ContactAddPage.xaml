@@ -24,27 +24,27 @@
                 </VerticalStackLayout>
                 <VerticalStackLayout>
                     <Label Text="Last Name" />
-                    <Entry VerticalOptions="Center" Text="{Binding ContactForm.LastName}"/>
+                    <Entry Text="{Binding ContactForm.LastName}"/>
                 </VerticalStackLayout>
                 <VerticalStackLayout>
                     <Label Text="Email" />
-                    <Entry VerticalOptions="Center" Text="{Binding ContactForm.Email}"/>
+                    <Entry Text="{Binding ContactForm.Email}"/>
                 </VerticalStackLayout>
                 <VerticalStackLayout>
                     <Label Text="Phonenumber" />
-                    <Entry VerticalOptions="Center" Text="{Binding ContactForm.PhoneNumber}"/>
+                    <Entry Text="{Binding ContactForm.PhoneNumber}"/>
                 </VerticalStackLayout>
                 <VerticalStackLayout>
                     <Label Text="Address" />
-                    <Entry VerticalOptions="Center" Text="{Binding ContactForm.PostalCode}"/>
+                    <Entry Text="{Binding ContactForm.Address}"/>
                 </VerticalStackLayout>
                 <VerticalStackLayout>
                     <Label Text="Postal Code" />
-                    <Entry VerticalOptions="Center" Text="{Binding ContactForm.Address}"/>
+                    <Entry Text="{Binding ContactForm.PostalCode}"/>
                 </VerticalStackLayout>
                 <VerticalStackLayout>
                     <Label Text="City" />
-                    <Entry VerticalOptions="Center" Text="{Binding ContactForm.City}"/>
+                    <Entry Text="{Binding ContactForm.City}"/>
                 </VerticalStackLayout>
             </VerticalStackLayout>
 
