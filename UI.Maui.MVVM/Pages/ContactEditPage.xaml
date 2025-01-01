@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="UI.Maui.MVVM.Pages.ContactAddPage"
+             x:Class="UI.Maui.MVVM.Pages.ContactEditPage"
              
              xmlns:viewmodel="clr-namespace:UI.Maui.MVVM.ViewModels"
-             x:DataType="{x:Type viewmodel:ContactAddPageViewModel}"
+             x:DataType="{x:Type viewmodel:ContactEditPageViewModel}"
              
-             Title="ContactAddPage">
+             Title="ContactEditPage">
 
     <Shell.BackButtonBehavior>
         <BackButtonBehavior IsVisible="False" IsEnabled="False" />
@@ -14,7 +14,7 @@
 
 
     <ScrollView>
-        <Grid RowDefinitions="auto, auto" Padding="20" RowSpacing="50">
+        <Grid RowDefinitions="auto, auto" Padding="20" >
 
             <!-- Input Group-->
             <VerticalStackLayout Grid.Row="0" Spacing="10" Margin="0, 30, 0, 0" >
@@ -49,12 +49,10 @@
             </VerticalStackLayout>
 
             <HorizontalStackLayout Grid.Row="1" HorizontalOptions="Center" Spacing="50">
-                <Button  Text="Save"  WidthRequest="150" Command="{Binding AddContactCommand}" BackgroundColor="DarkOliveGreen"/>
+                <Button  Text="Save"  WidthRequest="150" BackgroundColor="DarkOliveGreen" />
                 <Button  Text="Cancel"  WidthRequest="150" x:Name="btnCancel" Clicked="btnCancel_Clicked" BackgroundColor="Firebrick" />
             </HorizontalStackLayout>
 
         </Grid>
     </ScrollView>
-
-
 </ContentPage>

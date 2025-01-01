@@ -30,6 +30,8 @@ namespace UI.Maui.MVVM
             builder.Services.AddTransient<ContactAddPageViewModel>();
             builder.Services.AddTransient<ContactDetailsPage>();
             builder.Services.AddTransient<ContactDetailsPageViewModel>();
+            builder.Services.AddTransient<ContactEditPage>();
+            builder.Services.AddTransient<ContactEditPageViewModel>();
 
 
 

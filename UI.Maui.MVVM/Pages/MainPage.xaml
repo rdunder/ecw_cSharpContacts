@@ -23,8 +23,11 @@
             <SearchBar 
                 x:Name="searchBar"
                 Placeholder="Search Contact"
-                HeightRequest="50" />
+                HeightRequest="50"
+                SearchCommand="{Binding SearchContactCommand}"
+                SearchCommandParameter="{Binding Text, Source={x:Reference searchBar}}"/>
         </VerticalStackLayout>
+        
 
         <CollectionView
             x:Name="MainCollectionView"
@@ -40,8 +43,7 @@
                 <DataTemplate>
 
                     <VerticalStackLayout Spacing="5" Padding="10">
-                        <Label Text="{Binding FullName}" FontSize="18"/>
-                        <Label Text="{Binding Email}" FontSize="12" />
+                        <Label Text="{Binding FullName}" FontSize="14"/>
                         <BoxView HeightRequest="1" Color="DarkOliveGreen" Grid.Column="1" />
                     </VerticalStackLayout>
 
@@ -49,6 +51,31 @@
                 </DataTemplate>
             </CollectionView.ItemTemplate>
         </CollectionView>
+        
+        <!-- Also tried Listview, in theory it would be a beter choice but it was more complicated to get working wit MVVM imho -->
+        <!--<ListView
+            ItemsSource="{Binding Contacts}"
+            Grid.Row="1"
+            SelectedItem="{Binding SelectedContact}"
+            ItemSelected=""
+            ItemTapped=""
+            >
+
+            <ListView.Behaviors>
+                
+            </ListView.Behaviors>
+            
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <VerticalStackLayout Spacing="5" Padding="10">
+                            <Label Text="{Binding FullName}" FontSize="14"/>
+                            <BoxView HeightRequest="1" Color="DarkOliveGreen" Grid.Column="1" />
+                        </VerticalStackLayout>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>-->
 
     </Grid>
 

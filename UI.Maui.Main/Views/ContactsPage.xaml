@@ -7,7 +7,6 @@
     <VerticalStackLayout Padding="20" Spacing="20">
 
         <Button x:Name="btnAddContact" Clicked="btnAddContact_Clicked" Text="Add Contact"  VerticalOptions="Center" Padding="20" />
-
         <SearchBar
             x:Name="searchBar"
             Placeholder="Search Contact"

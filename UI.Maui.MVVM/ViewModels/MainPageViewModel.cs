@@ -32,7 +32,7 @@ public partial class MainPageViewModel : ObservableObject
 
     private void LoadContacts()
     {
-        _contacts = new( _contactService.GetAllContacts().OrderBy(c => c.LastName) );
+        Contacts = new( _contactService.GetAllContacts().OrderBy(c => c.LastName) );
     }
 
     [RelayCommand]
@@ -47,5 +47,18 @@ public partial class MainPageViewModel : ObservableObject
 
             Shell.Current.GoToAsync(nameof(ContactDetailsPage), navParam);
         }
+    }
+
+    [RelayCommand]
+    public void SearchContact(string query)
+    {
+        if (query == string.Empty)
+        {
+            LoadContacts();
+            return;
+        }            
+
+        var filteredList = _contacts.Where(x => x.LastName.StartsWith(query, StringComparison.OrdinalIgnoreCase)).ToList();
+        Contacts = new(filteredList);
     }
 }
