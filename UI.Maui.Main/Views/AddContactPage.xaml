@@ -11,31 +11,31 @@
         <VerticalStackLayout Spacing="10" Margin="0, 30, 0, 0" HorizontalOptions="Center">            
             <HorizontalStackLayout>
                 <Label Text="First Name" VerticalOptions="Center" WidthRequest="100"></Label>
-                <Entry VerticalOptions="Center" ></Entry>
+                <Entry x:Name="entryFirstName" VerticalOptions="Center" ></Entry>
             </HorizontalStackLayout>
             <HorizontalStackLayout>
                 <Label Text="Last Name" VerticalOptions="Center" WidthRequest="100"></Label>
-                <Entry VerticalOptions="Center"></Entry>
+                <Entry x:Name="entryLastName" VerticalOptions="Center"></Entry>
             </HorizontalStackLayout>
             <HorizontalStackLayout>
                 <Label Text="Email" VerticalOptions="Center" WidthRequest="100"></Label>
-                <Entry VerticalOptions="Center"></Entry>
+                <Entry x:Name="entryEmail" VerticalOptions="Center"></Entry>
             </HorizontalStackLayout>
             <HorizontalStackLayout>
                 <Label Text="Phonenumber" VerticalOptions="Center" WidthRequest="100"></Label>
-                <Entry VerticalOptions="Center"></Entry>
+                <Entry x:Name="entryPhone" VerticalOptions="Center"></Entry>
             </HorizontalStackLayout>
             <HorizontalStackLayout>
                 <Label Text="Address" VerticalOptions="Center" WidthRequest="100"></Label>
-                <Entry VerticalOptions="Center"></Entry>
+                <Entry x:Name="entryAddress" VerticalOptions="Center"></Entry>
             </HorizontalStackLayout>
             <HorizontalStackLayout>
                 <Label Text="Postal Code" VerticalOptions="Center" WidthRequest="100"></Label>
-                <Entry VerticalOptions="Center"></Entry>
+                <Entry x:Name="entryPostal" VerticalOptions="Center"></Entry>
             </HorizontalStackLayout>
             <HorizontalStackLayout>
                 <Label Text="City" VerticalOptions="Center" WidthRequest="100"></Label>
-                <Entry VerticalOptions="Center"></Entry>
+                <Entry x:Name="entryCity" VerticalOptions="Center"></Entry>
             </HorizontalStackLayout>
         </VerticalStackLayout>
     

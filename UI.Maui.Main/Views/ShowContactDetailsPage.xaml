@@ -7,6 +7,7 @@
         <HorizontalStackLayout>
             <Button x:Name="btnBack" Text="Go Back" Clicked="btnBack_Clicked" />
             <Button x:Name="btnEdit" Text="Edit Contact" Clicked="btnEdit_Clicked" />
+            <Button x:Name="btnRemove" Text="Remove Contact" Clicked="btnRemove_Clicked" />
         </HorizontalStackLayout>
         <Label 
         x:Name="viewName"

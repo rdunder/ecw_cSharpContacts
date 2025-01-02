@@ -28,7 +28,6 @@ public partial class ShowContactDetailsPage : ContentPage
         InitializeComponent();
 
         _contactService = contactService;
-
     }
 
 
@@ -47,6 +46,15 @@ public partial class ShowContactDetailsPage : ContentPage
                 {"CurrentContact", _currentContact }
             };
             Shell.Current.GoToAsync(nameof(EditContactPage), navParam);
+        }
+    }
+
+    private void btnRemove_Clicked(object sender, EventArgs e)
+    {
+        if (_currentContact != null)
+        {
+            _contactService.RemoveContact(_currentContact.Id);
+            Shell.Current.GoToAsync("..");
         }
     }
 }

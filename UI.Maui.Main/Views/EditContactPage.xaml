@@ -5,9 +5,8 @@
              xmlns:controls="clr-namespace:UI.Maui.Main.Views.Controls"
              x:Class="UI.Maui.Main.Views.EditContactPage"
              Title="EditContactPage">
-    
-    
-   
+
+
     <VerticalStackLayout Padding="10" Spacing="50">
         <Label x:Name="feedback" Text=""></Label>
 
