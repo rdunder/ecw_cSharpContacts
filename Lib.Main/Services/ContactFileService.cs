@@ -1,6 +1,4 @@
-﻿
-
-using Lib.Main.Interfaces;
+﻿using Lib.Main.Interfaces;
 using System.Diagnostics;
 
 namespace Lib.Main.Services;

@@ -3,7 +3,6 @@ using Lib.Main.Helpers;
 using Lib.Main.Interfaces;
 using Lib.Main.Models;
 using System.Diagnostics;
-using System.Linq.Expressions;
 
 namespace Lib.Main.Services;
 
@@ -17,11 +16,7 @@ public class ContactService : IContactService
         _fileService = fileService;
         _contacts = UpdateContactList();
     }
-
-
-
-
-   
+    
     public bool AddContact(ContactFormModel contactForm)
     {
         if (_contacts.Any(c => c.Email == contactForm.Email)) return false;
@@ -67,6 +62,8 @@ public class ContactService : IContactService
         if (!_contacts.Any(contact => contact.Id == id)) 
             return false;
 
+        //  Here i get a reference to the object that is in the list.
+        //  So by changeing the reference, i will change the object in the list
         var entity = _contacts.Where(e => e.Id == id).FirstOrDefault();
 
         if (entity == null)
