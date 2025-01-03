@@ -58,4 +58,25 @@ public class ContactFactoryTests
         Assert.IsType<ContactModel>(model);
         Assert.Equal(model.FirstName, entity.FirstName);
     }
+
+    [Fact]
+    public void Create_ShouldReturnFormModelWhenParamIsModel()
+    {
+        //  Arrange
+        ContactModel model = new ContactModel()
+        {
+            FirstName = "Test",
+            LastName = "Test",
+            Email = "test@domain.com",
+            PhoneNumber = "1234567890"
+        };
+
+        //  Act
+        ContactFormModel formModel = ContactFactory.Create(model);
+
+        //  Assert
+        Assert.NotNull(formModel);
+        Assert.IsType<ContactFormModel>(formModel);
+        Assert.Equal(model.FirstName, formModel.FirstName);
+    }
 }

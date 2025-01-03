@@ -24,6 +24,7 @@
                 BackgroundColor="DarkOliveGreen"
                 Clicked="btnBack_Clicked"
                 />
+            
 
             <VerticalStackLayout Grid.Row="1" Padding="0, 20, 0, 40" Spacing="5" >
                 <Label Text="{Binding SelectedContact.FullName}" FontSize="36" HorizontalOptions="Center" />

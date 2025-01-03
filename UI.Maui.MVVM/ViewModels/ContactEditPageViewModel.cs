@@ -27,16 +27,7 @@ public partial class ContactEditPageViewModel : ObservableObject
     [RelayCommand]
     public void SaveEditedContact()
     {
-        var contactForm = ContactFactory.Create();
-        contactForm.FirstName = _currentContact.FirstName;
-        contactForm.LastName = _currentContact.LastName;
-        contactForm.Email = _currentContact.Email;
-        contactForm.PhoneNumber = _currentContact.PhoneNumber;
-        contactForm.Address = _currentContact.Address;
-        contactForm.PostalCode = _currentContact.PostalCode;
-        contactForm.City = _currentContact.City;
-
-        if (_contactService.UpdateContact(_currentContact.Id, contactForm))
+        if ( _contactService.UpdateContact( _currentContact.Id, ContactFactory.Create(_currentContact) ) )
         {
             var editedContact = _contactService.GetContactById(_currentContact.Id);
 

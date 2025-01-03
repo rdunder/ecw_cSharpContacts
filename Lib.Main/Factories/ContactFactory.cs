@@ -24,7 +24,7 @@ public static class ContactFactory
             };
         }
         catch (Exception ex)
-        {
+        {            
             Debug.WriteLine($"Error when creating Contact Entity:\n{ex.Message}\n");
             return new ContactEntity();
         }
@@ -53,5 +53,25 @@ public static class ContactFactory
         }
     }
 
-   
+    public static ContactFormModel Create(ContactModel contactModel)
+    {
+        try
+        {
+            return new ContactFormModel()
+            {
+                FirstName = contactModel.FirstName,
+                LastName = contactModel.LastName,
+                Email = contactModel.Email,
+                PhoneNumber = contactModel.PhoneNumber,
+                Address = contactModel.Address,
+                PostalCode = contactModel.PostalCode,
+                City = contactModel.City,
+            };
+        }
+        catch (Exception ex)
+        {
+            Debug.WriteLine($"Error when creating Contact Entity:\n{ex.Message}\n");
+            return new ContactFormModel();
+        }
+    }
 }
