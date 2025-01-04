@@ -17,13 +17,13 @@ The project contains the following main components:
 - Implements Factory pattern
 - Implements Service pattern
 
-### Console Application (UI.CLI.Main)
+### Console Application (UI.cli.Main)
 - List all contacts
 - Create new contacts
 - Save contacts to JSON file
 - Automatic loading of contacts from JSON file
 
-### .NET MAUI Application (UI.MAUI.Main)
+### .NET MAUI Application (UI.Maui.Main)
 - Complete CRUD functionality for contacts
   - List all contacts
   - Create new contacts
@@ -33,7 +33,7 @@ The project contains the following main components:
 - Implements Dependency Injection
 - Search Contacts
 
-### .NET MAUI Application using MVVM (UI.MAUI.MVVM)
+### .NET MAUI Application using MVVM (UI.Maui.MVVM)
 - Complete CRUD functionality for contacts
   - List all contacts
   - Create new contacts
