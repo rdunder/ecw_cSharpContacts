@@ -12,7 +12,7 @@ The project contains the following main components:
 
 ## 🚀 Features
 
-## Shared Library (Lib.Main)
+### Shared Library (Lib.Main)
 - Implements SOLID
 - Implements Factory pattern
 - Implements Service pattern
