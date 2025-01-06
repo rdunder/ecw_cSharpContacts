@@ -13,26 +13,27 @@
     <ScrollView>
 
         <Grid RowDefinitions="auto, auto, auto, auto, auto" Padding="20, 20, 20, 0" RowSpacing="20">
-            <Button
+            
+            <ImageButton
+                Source="arrow_left.png"
                 x:Name="btnBack"
-                Grid.Row="0" 
-                Text="&lt;-"
-                WidthRequest="50"
-                HeightRequest="50"
+                Grid.Row="0"
+                HeightRequest="40"
+                Padding="10"
                 CornerRadius="100"
-                HorizontalOptions="Start"
                 BackgroundColor="DarkOliveGreen"
+                HorizontalOptions="Start"
                 Clicked="btnBack_Clicked"
                 />
-            
+
 
             <VerticalStackLayout Grid.Row="1" Padding="0, 20, 0, 40" Spacing="5" >
                 <Label Text="{Binding SelectedContact.FullName}" FontSize="36" HorizontalOptions="Center" />
                 <BoxView BackgroundColor="DarkOliveGreen" HeightRequest="1" />
 
-                <HorizontalStackLayout HorizontalOptions="Center" Spacing="10" Margin="0, 20, 0, 0">
-                    <Button Text="Edit" BackgroundColor="DarkOliveGreen" Command="{Binding EditContactCommand}"/>
-                    <Button Text="Remove" BackgroundColor="Firebrick" Command="{Binding DeleteContactCommand}"/>
+                <HorizontalStackLayout HorizontalOptions="Center" Spacing="20" Margin="0, 20, 0, 0">
+                    <ImageButton Source="edit.png" HeightRequest="50" WidthRequest="70" Padding="12" BackgroundColor="DarkOrange" Command="{Binding EditContactCommand}" />
+                    <ImageButton Source="trash.png" HeightRequest="50" WidthRequest="70" Padding="12" BackgroundColor="Firebrick" Command="{Binding DeleteContactCommand}" />
                 </HorizontalStackLayout>
 
             </VerticalStackLayout>
