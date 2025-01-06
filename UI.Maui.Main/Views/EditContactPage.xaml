@@ -6,14 +6,17 @@
              x:Class="UI.Maui.Main.Views.EditContactPage"
              Title="EditContactPage">
 
+    <controls:ContactEntryControl x:Name="contactCtr"
+                                  OnSave="btnSave_Clicked"
+                                  OnCancel="btnCancel_Clicked"
+                                  OnError="contactCtr_OnError" />
 
+    <!--
     <VerticalStackLayout Padding="10" Spacing="50">
         <Label x:Name="feedback" Text=""></Label>
 
-        <!-- Input Group-->
         <VerticalStackLayout Spacing="10" Margin="0, 30, 0, 0" HorizontalOptions="Center">
 
-            <!-- First Name Input -->
             <HorizontalStackLayout>
                 <Label Text="First Name" VerticalOptions="Center" WidthRequest="100"></Label>
                 <Entry x:Name="firstName" VerticalOptions="Center" >
@@ -27,7 +30,6 @@
                 </Entry>                
             </HorizontalStackLayout>
             
-            <!-- Last Name Input -->
             <HorizontalStackLayout>
                 <Label Text="Last Name" VerticalOptions="Center" WidthRequest="100"></Label>
                 <Entry x:Name="lastName" VerticalOptions="Center">
@@ -41,7 +43,6 @@
                 </Entry>
             </HorizontalStackLayout>
 
-            <!-- Email Input -->
             <HorizontalStackLayout>
                 <Label Text="Email" VerticalOptions="Center" WidthRequest="100"></Label>
                 <Entry x:Name="email" VerticalOptions="Center">
@@ -63,22 +64,27 @@
                     </Entry.Behaviors>
                 </Entry>
             </HorizontalStackLayout>
+            
             <HorizontalStackLayout>
                 <Label Text="Phonenumber" VerticalOptions="Center" WidthRequest="100"></Label>
                 <Entry x:Name="phoneNumber" VerticalOptions="Center"></Entry>
             </HorizontalStackLayout>
+            
             <HorizontalStackLayout>
                 <Label Text="Address" VerticalOptions="Center" WidthRequest="100"></Label>
                 <Entry x:Name="address" VerticalOptions="Center"></Entry>
             </HorizontalStackLayout>
+            
             <HorizontalStackLayout>
                 <Label Text="Postal Code" VerticalOptions="Center" WidthRequest="100"></Label>
                 <Entry x:Name="postalCode" VerticalOptions="Center"></Entry>
             </HorizontalStackLayout>
+            
             <HorizontalStackLayout>
                 <Label Text="City" VerticalOptions="Center" WidthRequest="100"></Label>
                 <Entry x:Name="city" VerticalOptions="Center"></Entry>
             </HorizontalStackLayout>
+            
         </VerticalStackLayout>
 
         <HorizontalStackLayout HorizontalOptions="Center" Spacing="50">
@@ -87,6 +93,6 @@
         </HorizontalStackLayout>
 
     </VerticalStackLayout>
-    
+-->
     
 </ContentPage>

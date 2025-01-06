@@ -18,13 +18,13 @@ public partial class EditContactPage : ContentPage
         {
             _currentContact = value;
 
-            firstName.Text = _currentContact.FirstName;
-            lastName.Text = _currentContact.LastName;
-            email.Text = _currentContact.Email;
-            phoneNumber.Text = _currentContact.PhoneNumber;
-            address.Text = _currentContact.Address;
-            postalCode.Text = _currentContact.PostalCode;
-            city.Text = _currentContact.City;
+            contactCtr.FirstName    = _currentContact.FirstName;
+            contactCtr.LastName     = _currentContact.LastName;
+            contactCtr.Email        = _currentContact.Email;
+            contactCtr.PhoneNumber  = _currentContact.PhoneNumber;
+            contactCtr.Address      = _currentContact.Address;
+            contactCtr.PostalCode   = _currentContact.PostalCode;
+            contactCtr.City         = _currentContact.City;
         }
     }
 
@@ -40,36 +40,18 @@ public partial class EditContactPage : ContentPage
 
     private void btnSave_Clicked(object sender, EventArgs e)
     {
-        if (firstNameValidator.IsNotValid)
-        {
-            DisplayAlert("ERROR", "First name need to be at least 2 letters long", "go back");
-            return;
-        }
-
-        if (emailValidator.IsNotValid)
-        {
-            string error = "";
-
-            foreach(var err in emailValidator.Errors)
-            {
-                error += $"{err}\n";    
-            }
-
-            DisplayAlert("error", error, "go back");
-
-            return;
-        }
 
         if (_currentContact != null)
         {
             var changedContact = ContactFactory.Create();
-            changedContact.FirstName = firstName.Text;
-            changedContact.LastName = lastName.Text;
-            changedContact.Email = email.Text;
-            changedContact.PhoneNumber = phoneNumber.Text;
-            changedContact.Address = address.Text;
-            changedContact.PostalCode = postalCode.Text;
-            changedContact.City = city.Text;
+
+            changedContact.FirstName    = contactCtr.FirstName;
+            changedContact.LastName     = contactCtr.LastName;
+            changedContact.Email        = contactCtr.Email;
+            changedContact.PhoneNumber  = contactCtr.PhoneNumber;
+            changedContact.Address      = contactCtr.Address;
+            changedContact.PostalCode   = contactCtr.PostalCode;
+            changedContact.City         = contactCtr.City;
 
             if (_contactService.UpdateContact(_currentContact.Id, changedContact))
             {
@@ -84,7 +66,7 @@ public partial class EditContactPage : ContentPage
             }
             else
             {
-                feedback.Text = "Something went south";
+                DisplayAlert("Service Error", "There was an error in contact service when trying to update the contact", "OK");
                
             }
         }
@@ -95,5 +77,10 @@ public partial class EditContactPage : ContentPage
         Debug.WriteLine("cliked cancel btn");
 
         Shell.Current.GoToAsync("..");
+    }
+
+    private void contactCtr_OnError(object sender, string e)
+    {
+        DisplayAlert("Error", e, "OK");
     }
 }
