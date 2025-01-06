@@ -8,6 +8,7 @@
 
     <controls:ContactEntryControl x:Name="contactCtr"
                                   OnSave="btnSave_Clicked"
-                                  OnCancel="btnCancel_Clicked" />
+                                  OnCancel="btnCancel_Clicked"
+                                  OnError="contactControl_OnError"/>
 
 </ContentPage>
