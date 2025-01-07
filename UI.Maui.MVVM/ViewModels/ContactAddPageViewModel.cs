@@ -5,6 +5,7 @@ using CommunityToolkit.Mvvm.Input;
 using Lib.Main.Factories;
 using Lib.Main.Interfaces;
 using Lib.Main.Models;
+using System.Diagnostics;
 using UI.Maui.MVVM.Pages;
 
 namespace UI.Maui.MVVM.ViewModels;
@@ -37,7 +38,7 @@ public partial class ContactAddPageViewModel : ObservableObject
             }
             else
             {
-                ContactForm.FirstName = "There was ERRORS";
+                Debug.WriteLine("contactservice.addcontact returned faslse");
             }
         }
     }
