@@ -29,6 +29,8 @@ public partial class MainPageViewModel : ObservableObject
         _contactService = contactService;
         LoadContacts();
 
+        //  Tried to add this because of the navstack keeps growing infinite, but the navigation breaks when adding this.
+        //
         //var nav = Shell.Current.Navigation;
         //if (nav.NavigationStack.Count() > 2)
         //{
