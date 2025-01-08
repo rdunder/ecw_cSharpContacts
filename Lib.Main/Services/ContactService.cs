@@ -25,7 +25,10 @@ public class ContactService : IContactService
         contactEntity.Id = Guid.NewGuid();
         _contacts.Add(contactEntity);
 
-        return SaveContactsToFile();
+        //return SaveContactsToFile();
+        if (!SaveContactsToFile()) return false;
+
+        return true;
     }
 
     public IEnumerable<ContactModel> GetAllContacts()
