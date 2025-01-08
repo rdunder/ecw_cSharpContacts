@@ -19,6 +19,10 @@ public class ContactServiceTests
     public ContactServiceTests()
     {
         fileServiceMock = new Mock<IFileService>();
+
+        fileServiceMock.Setup(fs => fs.GetContentFromFile())
+            .Returns("[]");
+
         _sut = new ContactService(fileServiceMock.Object);
     }
 
