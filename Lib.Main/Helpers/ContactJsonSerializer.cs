@@ -24,7 +24,7 @@ public static class ContactJsonSerializer
     public static string Serialize(List<ContactEntity> list)
     {
 
-        return JsonSerializer.Serialize(list) ?? null!;
+        return JsonSerializer.Serialize(list);
 
     }
 }

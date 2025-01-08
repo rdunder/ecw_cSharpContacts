@@ -25,9 +25,7 @@ public class ContactService : IContactService
         contactEntity.Id = Guid.NewGuid();
         _contacts.Add(contactEntity);
 
-        if (!SaveContactsToFile()) return false;
-
-        return true;
+        return SaveContactsToFile();
     }
 
     public IEnumerable<ContactModel> GetAllContacts()
@@ -38,33 +36,27 @@ public class ContactService : IContactService
     public ContactModel GetContactById(Guid id)
     {
         var entity = _contacts.FirstOrDefault(contact => contact.Id == id);
-        if (entity != null)
-            return ContactFactory.Create(entity);
-
-        return null!;      
+        return entity != null ? ContactFactory.Create(entity) : null!;
     }
 
     public bool RemoveContact(Guid id)
     {
-        if (!_contacts.Any(_contact => _contact.Id == id)) 
+        if (_contacts.All(contact => contact.Id != id)) 
             return false;
 
         _contacts.RemoveAll(entity => entity.Id == id);
 
-        if (!SaveContactsToFile()) 
-            return false;
-
-        return true;
+        return SaveContactsToFile();
     }
 
     public bool UpdateContact(Guid id, ContactFormModel contactForm)
     {
-        if (!_contacts.Any(contact => contact.Id == id)) 
+        if (_contacts.All(contact => contact.Id != id)) 
             return false;
 
         //  Here i get a reference to the object that is in the list.
         //  So by changeing the reference, i will change the object in the list
-        var entity = _contacts.Where(e => e.Id == id).FirstOrDefault();
+        var entity = _contacts.FirstOrDefault(e => e.Id == id);
 
         if (entity == null)
             return false;
@@ -76,30 +68,22 @@ public class ContactService : IContactService
         entity.Address      = string.IsNullOrEmpty(contactForm.Address)     ? entity.Address       : contactForm.Address;
         entity.PostalCode   = string.IsNullOrEmpty(contactForm.PostalCode)  ? entity.PostalCode    : contactForm.PostalCode;
         entity.City         = string.IsNullOrEmpty(contactForm.City)        ? entity.City          : contactForm.City;
-
-        if (!SaveContactsToFile()) 
-            return false;
-
-        return true;
+        
+        return SaveContactsToFile();
     }
 
     private bool SaveContactsToFile()
     {
         var jsonString = ContactJsonSerializer.Serialize(_contacts);
 
-        if (!_fileService.WriteContentToFile(jsonString))
-        {
-            return false;
-        }
-
-        return true;
+        return _fileService.WriteContentToFile(jsonString);
     }
 
     private List<ContactEntity> UpdateContactList()
     {
         try
         {
-            return ContactJsonSerializer.Deserialize(_fileService.GetContentFromFile()) ?? new List<ContactEntity>();
+            return ContactJsonSerializer.Deserialize(_fileService.GetContentFromFile());
         }
         catch (Exception ex)
         {

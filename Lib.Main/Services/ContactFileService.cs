@@ -5,15 +5,13 @@ namespace Lib.Main.Services;
 
 public class ContactFileService : IFileService
 {
-    private readonly string _basePath;
     private readonly string _filePath;
 
     public ContactFileService(string basePath, string fileName)
     {
-        _basePath = basePath;
         _filePath = Path.Combine(basePath, fileName);
 
-        if (!Directory.Exists(_basePath)) Directory.CreateDirectory(_basePath);
+        if (!Directory.Exists(basePath)) Directory.CreateDirectory(basePath);
         if (!File.Exists(_filePath)) File.WriteAllText(_filePath, "[]");
     }
 

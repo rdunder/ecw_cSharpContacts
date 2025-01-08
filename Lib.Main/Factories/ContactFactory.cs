@@ -6,13 +6,13 @@ namespace Lib.Main.Factories;
 
 public static class ContactFactory
 {
-    public static ContactFormModel Create() => new ContactFormModel();
+    public static ContactFormModel Create() => new();
 
     public static ContactEntity Create(ContactFormModel formModel)
     {
         try
         {
-            return new ContactEntity()
+            return new ContactEntity
             {
                 FirstName = formModel.FirstName,
                 LastName = formModel.LastName,
@@ -20,7 +20,7 @@ public static class ContactFactory
                 PhoneNumber = formModel.PhoneNumber,
                 PostalCode = formModel.PostalCode,
                 Address = formModel.Address,
-                City = formModel.City,
+                City = formModel.City
             };
         }
         catch (Exception ex)
@@ -34,7 +34,7 @@ public static class ContactFactory
     {
         try
         {
-            return new ContactModel()
+            return new ContactModel
             {
                 Id = contactEntity.Id,
                 FirstName = contactEntity.FirstName,
@@ -43,7 +43,7 @@ public static class ContactFactory
                 PhoneNumber = contactEntity.PhoneNumber,
                 PostalCode = contactEntity.PostalCode,
                 Address = contactEntity.Address,
-                City = contactEntity.City,
+                City = contactEntity.City
             };
         }
         catch (Exception ex)
@@ -57,7 +57,7 @@ public static class ContactFactory
     {
         try
         {
-            return new ContactFormModel()
+            return new ContactFormModel
             {
                 FirstName = contactModel.FirstName,
                 LastName = contactModel.LastName,
@@ -65,7 +65,7 @@ public static class ContactFactory
                 PhoneNumber = contactModel.PhoneNumber,
                 Address = contactModel.Address,
                 PostalCode = contactModel.PostalCode,
-                City = contactModel.City,
+                City = contactModel.City
             };
         }
         catch (Exception ex)
