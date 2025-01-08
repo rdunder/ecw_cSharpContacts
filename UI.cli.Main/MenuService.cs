@@ -78,7 +78,7 @@ internal class MenuService
             }
             catch (Exception ex)
             {
-                Console.WriteLine($"An Errror Occured\n{ex}\n_____________________");
+                Console.WriteLine($"An Error Occured\n{ex}\n_____________________");
             }
         }
         else
