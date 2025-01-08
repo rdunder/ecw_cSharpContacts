@@ -22,6 +22,19 @@ public class ContactJsonSerializerTests
     }
 
     [Fact]
+    public void Deserialize_ShouldReturnNullBecauseOfInvalidJson()
+    {
+        //  Arrange
+        string testString = "[][]";
+
+        //  Act
+        List<ContactEntity> result = ContactJsonSerializer.Deserialize(testString);
+
+        //  Assert
+        Assert.Null(result);
+    }
+
+    [Fact]
     public void Serialize_ShouldReturnJsonString()
     {
         //  Arrange

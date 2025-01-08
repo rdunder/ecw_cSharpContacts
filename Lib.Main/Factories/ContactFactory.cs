@@ -1,6 +1,7 @@
 ﻿
 using Lib.Main.Models;
 using System.Diagnostics;
+using System.Reflection;
 
 namespace Lib.Main.Factories;
 
@@ -8,11 +9,10 @@ public static class ContactFactory
 {
     public static ContactFormModel Create() => new();
 
-    public static ContactEntity Create(ContactFormModel formModel)
-    {
-        try
-        {
-            return new ContactEntity
+    public static ContactEntity Create(ContactFormModel formModel) => 
+        formModel is null
+            ? throw new ArgumentNullException(nameof(formModel))
+            : new ContactEntity
             {
                 FirstName = formModel.FirstName,
                 LastName = formModel.LastName,
@@ -22,56 +22,33 @@ public static class ContactFactory
                 Address = formModel.Address,
                 City = formModel.City
             };
-        }
-        catch (Exception ex)
-        {            
-            Debug.WriteLine($"Error when creating Contact Entity:\n{ex.Message}\n");
-            return new ContactEntity();
-        }
-    }
 
-    public static ContactModel Create(ContactEntity contactEntity)
-    {
-        try
+    public static ContactModel Create(ContactEntity contactEntity) =>
+        contactEntity is null
+        ? throw new ArgumentNullException(nameof(contactEntity))
+        : new ContactModel
         {
-            return new ContactModel
-            {
-                Id = contactEntity.Id,
-                FirstName = contactEntity.FirstName,
-                LastName = contactEntity.LastName,
-                Email = contactEntity.Email,
-                PhoneNumber = contactEntity.PhoneNumber,
-                PostalCode = contactEntity.PostalCode,
-                Address = contactEntity.Address,
-                City = contactEntity.City
-            };
-        }
-        catch (Exception ex)
-        {
-            Debug.WriteLine($"Error when creating Contact Entity:\n{ex.Message}\n");
-            return new ContactModel();
-        }
-    }
+            Id = contactEntity.Id,
+            FirstName = contactEntity.FirstName,
+            LastName = contactEntity.LastName,
+            Email = contactEntity.Email,
+            PhoneNumber = contactEntity.PhoneNumber,
+            PostalCode = contactEntity.PostalCode,
+            Address = contactEntity.Address,
+            City = contactEntity.City
+        };
 
-    public static ContactFormModel Create(ContactModel contactModel)
-    {
-        try
+    public static ContactFormModel Create(ContactModel contactModel) =>    
+        contactModel is null
+        ? throw new ArgumentNullException(nameof(contactModel))
+        : new ContactFormModel
         {
-            return new ContactFormModel
-            {
-                FirstName = contactModel.FirstName,
-                LastName = contactModel.LastName,
-                Email = contactModel.Email,
-                PhoneNumber = contactModel.PhoneNumber,
-                Address = contactModel.Address,
-                PostalCode = contactModel.PostalCode,
-                City = contactModel.City
-            };
-        }
-        catch (Exception ex)
-        {
-            Debug.WriteLine($"Error when creating Contact Entity:\n{ex.Message}\n");
-            return new ContactFormModel();
-        }
-    }
+            FirstName = contactModel.FirstName,
+            LastName = contactModel.LastName,
+            Email = contactModel.Email,
+            PhoneNumber = contactModel.PhoneNumber,
+            Address = contactModel.Address,
+            PostalCode = contactModel.PostalCode,
+            City = contactModel.City
+        };
 }
