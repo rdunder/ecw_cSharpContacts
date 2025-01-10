@@ -50,7 +50,7 @@ public partial class ContactsPage : ContentPage
 
     private void SearchBar_TextChanged(object sender, TextChangedEventArgs e)
     {
-        ContactsListView.ItemsSource = _contacts.Where(x => x.LastName.StartsWith(searchBar.Text, StringComparison.OrdinalIgnoreCase)).ToList();
+        ContactsListView.ItemsSource = _contacts.Where(x => x.LastName.StartsWith(SearchBar.Text, StringComparison.OrdinalIgnoreCase)).ToList();
     }
 }
 

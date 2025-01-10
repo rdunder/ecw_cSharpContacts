@@ -14,12 +14,12 @@ public partial class ShowContactDetailsPage : ContentPage
         set
         {
             _currentContact = value;
-            viewName.Text = $"Name: {_currentContact.FullName}";
-            viewEmail.Text = $"Email: {_currentContact.Email}";
-            viewPhone.Text = $"Phone: {_currentContact.PhoneNumber}";
-            viewAdress.Text = $"Adress: {_currentContact.Address}";
-            viewPostal.Text = $"Postal Code: {_currentContact.PostalCode}";
-            viewCity.Text = $"City: {_currentContact.City}";
+            ViewName.Text = $"Name: {_currentContact.FullName}";
+            ViewEmail.Text = $"Email: {_currentContact.Email}";
+            ViewPhone.Text = $"Phone: {_currentContact.PhoneNumber}";
+            ViewAddress.Text = $"Adress: {_currentContact.Address}";
+            ViewPostal.Text = $"Postal Code: {_currentContact.PostalCode}";
+            ViewCity.Text = $"City: {_currentContact.City}";
         }
     }
 

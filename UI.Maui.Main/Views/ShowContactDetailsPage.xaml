@@ -5,27 +5,27 @@
              Title="ShowContactDetailsPage">
     <VerticalStackLayout Padding="10" Spacing="20">
         <HorizontalStackLayout>
-            <Button x:Name="btnBack" Text="Go Back" Clicked="btnBack_Clicked" />
-            <Button x:Name="btnEdit" Text="Edit Contact" Clicked="btnEdit_Clicked" />
-            <Button x:Name="btnRemove" Text="Remove Contact" Clicked="btnRemove_Clicked" />
+            <Button x:Name="BtnBack" Text="Go Back" Clicked="btnBack_Clicked" />
+            <Button x:Name="BtnEdit" Text="Edit Contact" Clicked="btnEdit_Clicked" />
+            <Button x:Name="BtnRemove" Text="Remove Contact" Clicked="btnRemove_Clicked" />
         </HorizontalStackLayout>
         <Label 
-        x:Name="viewName"
+        x:Name="ViewName"
         Text="..." />
         <Label 
-        x:Name="viewEmail"
+        x:Name="ViewEmail"
         Text="..." />
         <Label 
-        x:Name="viewPhone"
+        x:Name="ViewPhone"
         Text="..." />
         <Label 
-        x:Name="viewAdress"
+        x:Name="ViewAddress"
         Text="..." />
         <Label 
-        x:Name="viewPostal"
+        x:Name="ViewPostal"
         Text="..." />
         <Label 
-        x:Name="viewCity"
+        x:Name="ViewCity"
         Text="..." />
     </VerticalStackLayout>
 </ContentPage>
