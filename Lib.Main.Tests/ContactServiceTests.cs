@@ -14,23 +14,23 @@ namespace Lib.Main.Tests;
 public class ContactServiceTests
 {
     IContactService _sut;
-    Mock<IFileService> fileServiceMock;
+    Mock<IFileService> _fileServiceMock;
 
     public ContactServiceTests()
     {
-        fileServiceMock = new Mock<IFileService>();
+        _fileServiceMock = new Mock<IFileService>();
 
-        fileServiceMock.Setup(fs => fs.GetContentFromFile())
+        _fileServiceMock.Setup(fs => fs.GetContentFromFile())
             .Returns("[]");
 
-        _sut = new ContactService(fileServiceMock.Object);
+        _sut = new ContactService(_fileServiceMock.Object);
     }
 
     [Fact]
     public void AddContact_ShouldAddContactToList()
     {
         //  Arrange
-        fileServiceMock.Setup(fs => fs.WriteContentToFile(It.IsAny<string>())).Returns(true);
+        _fileServiceMock.Setup(fs => fs.WriteContentToFile(It.IsAny<string>())).Returns(true);
 
         ContactFormModel contactFormModel = new ContactFormModel()
         {
@@ -53,7 +53,7 @@ public class ContactServiceTests
     public void AddContact_ShouldReturnFalseBecauseOfFileService()
     {
         //  Arrange
-        fileServiceMock.Setup(fs => fs.WriteContentToFile(It.IsAny<string>())).Returns(false);
+        _fileServiceMock.Setup(fs => fs.WriteContentToFile(It.IsAny<string>())).Returns(false);
 
         ContactFormModel contactFormModel = new ContactFormModel()
         {
@@ -86,7 +86,7 @@ public class ContactServiceTests
     public void GetContactById_ShouldReturnContactModel()
     {
         //  Arrange
-        fileServiceMock.Setup(fs => fs.WriteContentToFile(It.IsAny<string>())).Returns(true);
+        _fileServiceMock.Setup(fs => fs.WriteContentToFile(It.IsAny<string>())).Returns(true);
 
         ContactFormModel contactFormModel = new ContactFormModel()
         {
@@ -113,7 +113,7 @@ public class ContactServiceTests
     public void GetContactById_ShouldReturnNull()
     {
         //  Arrange
-        fileServiceMock.Setup(fs => fs.WriteContentToFile(It.IsAny<string>())).Returns(true);
+        _fileServiceMock.Setup(fs => fs.WriteContentToFile(It.IsAny<string>())).Returns(true);
 
         ContactFormModel contactFormModel = new ContactFormModel()
         {
@@ -123,9 +123,6 @@ public class ContactServiceTests
         };
 
         _sut.AddContact(contactFormModel);
-
-        var contacts = _sut.GetAllContacts();
-        var existingId = contacts.First().Id;
         var notExistingId = Guid.NewGuid();
 
         //  Act
@@ -140,7 +137,7 @@ public class ContactServiceTests
     public void RemoveContact_ShouldReturnTrue()
     {
         //  Arrange
-        fileServiceMock.Setup(fs => fs.WriteContentToFile(It.IsAny<string>())).Returns(true);
+        _fileServiceMock.Setup(fs => fs.WriteContentToFile(It.IsAny<string>())).Returns(true);
 
         ContactFormModel contactFormModel = new ContactFormModel()
         {
@@ -168,7 +165,7 @@ public class ContactServiceTests
     public void RemoveContact_ShouldReturnFalseBecauseOfFileService()
     {
         //  Arrange
-        fileServiceMock.Setup(fs => fs.WriteContentToFile(It.IsAny<string>())).Returns(false);
+        _fileServiceMock.Setup(fs => fs.WriteContentToFile(It.IsAny<string>())).Returns(false);
 
         ContactFormModel contactFormModel = new ContactFormModel()
         {
@@ -185,7 +182,6 @@ public class ContactServiceTests
 
         //  Act
         var result = _sut.RemoveContact(existingId);
-        var contactsAfterRemove = _sut.GetAllContacts();
 
         //  Assert
         Assert.True(!result);
@@ -195,7 +191,7 @@ public class ContactServiceTests
     public void RemoveContact_ShouldReturnFalseBecauseOfNonExistingId()
     {
         //  Arrange
-        fileServiceMock.Setup(fs => fs.WriteContentToFile(It.IsAny<string>())).Returns(true);
+        _fileServiceMock.Setup(fs => fs.WriteContentToFile(It.IsAny<string>())).Returns(true);
 
         ContactFormModel contactFormModel = new ContactFormModel()
         {
@@ -223,7 +219,7 @@ public class ContactServiceTests
     public void UpdateContact_SHouldUpdateContactAndReturnTrue()
     {
         //  Arrange
-        fileServiceMock.Setup(fs => fs.WriteContentToFile(It.IsAny<string>())).Returns(true);
+        _fileServiceMock.Setup(fs => fs.WriteContentToFile(It.IsAny<string>())).Returns(true);
 
         var contactFormBeforeUpdate = new ContactFormModel()
         {
@@ -259,7 +255,7 @@ public class ContactServiceTests
     public void UpdateContact_SHouldReturnFalseBecauseOfNonExistingId()
     {
         //  Arrange
-        fileServiceMock.Setup(fs => fs.WriteContentToFile(It.IsAny<string>())).Returns(true);
+        _fileServiceMock.Setup(fs => fs.WriteContentToFile(It.IsAny<string>())).Returns(true);
 
         var contactFormBeforeUpdate = new ContactFormModel()
         {
