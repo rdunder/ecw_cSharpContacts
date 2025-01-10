@@ -1,27 +1,19 @@
 ﻿
 
 using Lib.Main.Interfaces;
-using Microsoft.Extensions.Hosting;
 using UI.cli.Main.Interfaces;
 using UI.cli.Main.MenuCommands;
 
 namespace UI.cli.Main;
 
-internal class MenuService
+internal class MenuService(IContactService contactService)
 {
-    private readonly IContactService _contactService;
-    private readonly List<IMenuCommand> _commands;
-
-    public MenuService(IContactService contactService)
+    private readonly List<IMenuCommand> _commands = new()
     {
-        _contactService = contactService;
-        _commands = new List<IMenuCommand>()
-        {
-            new CmdAddContact(contactService),
-            new CmdGetAllContacts(contactService),
-            new CmdTestingRemoveUpdate(contactService)
-        };
-    }
+        new CmdAddContact(contactService),
+        new CmdGetAllContacts(contactService),
+        new CmdTestingRemoveUpdate(contactService)
+    };
 
     public void Run()
     {
@@ -55,7 +47,7 @@ internal class MenuService
         }
     }
 
-    public bool ProcessMenuSelection(ConsoleKeyInfo key)
+    private bool ProcessMenuSelection(ConsoleKeyInfo key)
     {
         if (key.KeyChar.ToString().ToLower() == "q")
         {
