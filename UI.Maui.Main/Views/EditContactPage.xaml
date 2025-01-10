@@ -6,7 +6,7 @@
              x:Class="UI.Maui.Main.Views.EditContactPage"
              Title="EditContactPage">
 
-    <controls:ContactEntryControl x:Name="contactCtr"
+    <controls:ContactEntryControl x:Name="ContactCtr"
                                   OnSave="btnSave_Clicked"
                                   OnCancel="btnCancel_Clicked"
                                   OnError="contactCtr_OnError" />

@@ -1,7 +1,6 @@
 ﻿using Microsoft.Extensions.Logging;
 using CommunityToolkit.Maui;
 using Lib.Main.Interfaces;
-using Lib.Main.Factories;
 using Lib.Main.Services;
 
 namespace UI.Maui.Main;

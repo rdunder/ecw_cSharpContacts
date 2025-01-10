@@ -6,7 +6,7 @@
     
     
     <VerticalStackLayout Padding="10" Spacing="50">
-        <Label x:Name="feedback" Text=""></Label>
+        <Label x:Name="Feedback" Text=""></Label>
 
         <!-- Input Group-->
         <VerticalStackLayout Spacing="10" Margin="0, 30, 0, 0" HorizontalOptions="Center">

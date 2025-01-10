@@ -1,6 +1,5 @@
 using Lib.Main.Factories;
 using Lib.Main.Interfaces;
-using System.Diagnostics;
 
 namespace UI.Maui.Main.Views;
 
@@ -18,13 +17,13 @@ public partial class AddContactPage : ContentPage
     {
         var contactForm = ContactFactory.Create();
 
-        contactForm.FirstName   = contactCtr.FirstName;
-        contactForm.LastName    = contactCtr.LastName;
-        contactForm.Email       = contactCtr.Email;
-        contactForm.PhoneNumber = contactCtr.PhoneNumber;
-        contactForm.Address     = contactCtr.Address;
-        contactForm.PostalCode  = contactCtr.PostalCode;
-        contactForm.City        = contactCtr.City;
+        contactForm.FirstName   = ContactCtr.FirstName;
+        contactForm.LastName    = ContactCtr.LastName;
+        contactForm.Email       = ContactCtr.Email;
+        contactForm.PhoneNumber = ContactCtr.PhoneNumber;
+        contactForm.Address     = ContactCtr.Address;
+        contactForm.PostalCode  = ContactCtr.PostalCode;
+        contactForm.City        = ContactCtr.City;
 
         if (_contactService.AddContact(contactForm))
         {

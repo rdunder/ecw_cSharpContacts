@@ -1,10 +1,5 @@
 ﻿using Lib.Main.Factories;
 using Lib.Main.Interfaces;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using UI.cli.Main.Interfaces;
 
 namespace UI.cli.Main.MenuCommands

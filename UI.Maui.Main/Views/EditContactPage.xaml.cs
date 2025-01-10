@@ -18,13 +18,13 @@ public partial class EditContactPage : ContentPage
         {
             _currentContact = value;
 
-            contactCtr.FirstName    = _currentContact.FirstName;
-            contactCtr.LastName     = _currentContact.LastName;
-            contactCtr.Email        = _currentContact.Email;
-            contactCtr.PhoneNumber  = _currentContact.PhoneNumber;
-            contactCtr.Address      = _currentContact.Address;
-            contactCtr.PostalCode   = _currentContact.PostalCode;
-            contactCtr.City         = _currentContact.City;
+            ContactCtr.FirstName    = _currentContact.FirstName;
+            ContactCtr.LastName     = _currentContact.LastName;
+            ContactCtr.Email        = _currentContact.Email;
+            ContactCtr.PhoneNumber  = _currentContact.PhoneNumber;
+            ContactCtr.Address      = _currentContact.Address;
+            ContactCtr.PostalCode   = _currentContact.PostalCode;
+            ContactCtr.City         = _currentContact.City;
         }
     }
 
@@ -45,13 +45,13 @@ public partial class EditContactPage : ContentPage
         {
             var changedContact = ContactFactory.Create();
 
-            changedContact.FirstName    = contactCtr.FirstName;
-            changedContact.LastName     = contactCtr.LastName;
-            changedContact.Email        = contactCtr.Email;
-            changedContact.PhoneNumber  = contactCtr.PhoneNumber;
-            changedContact.Address      = contactCtr.Address;
-            changedContact.PostalCode   = contactCtr.PostalCode;
-            changedContact.City         = contactCtr.City;
+            changedContact.FirstName    = ContactCtr.FirstName;
+            changedContact.LastName     = ContactCtr.LastName;
+            changedContact.Email        = ContactCtr.Email;
+            changedContact.PhoneNumber  = ContactCtr.PhoneNumber;
+            changedContact.Address      = ContactCtr.Address;
+            changedContact.PostalCode   = ContactCtr.PostalCode;
+            changedContact.City         = ContactCtr.City;
 
             if (_contactService.UpdateContact(_currentContact.Id, changedContact))
             {

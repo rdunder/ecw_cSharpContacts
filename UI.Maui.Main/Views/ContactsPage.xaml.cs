@@ -1,7 +1,6 @@
 using Lib.Main.Interfaces;
 using Lib.Main.Models;
 using System.Collections.ObjectModel;
-using System.Diagnostics;
 
 namespace UI.Maui.Main.Views;
 
