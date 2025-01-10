@@ -21,3 +21,6 @@ var host = Host.CreateDefaultBuilder()
 
 var menu = host.Services.GetRequiredService<MenuService>();
 menu.Run();
+
+
+
