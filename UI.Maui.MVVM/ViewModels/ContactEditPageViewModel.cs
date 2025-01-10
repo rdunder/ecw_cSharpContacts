@@ -5,7 +5,6 @@ using CommunityToolkit.Mvvm.Input;
 using Lib.Main.Factories;
 using Lib.Main.Interfaces;
 using Lib.Main.Models;
-using System.Diagnostics;
 using UI.Maui.MVVM.Pages;
 
 namespace UI.Maui.MVVM.ViewModels;
@@ -27,9 +26,9 @@ public partial class ContactEditPageViewModel : ObservableObject
     [RelayCommand]
     public void SaveEditedContact()
     {
-        if ( _contactService.UpdateContact( _currentContact.Id, ContactFactory.Create(_currentContact) ) )
+        if ( _contactService.UpdateContact( CurrentContact.Id, ContactFactory.Create(CurrentContact) ) )
         {
-            var editedContact = _contactService.GetContactById(_currentContact.Id);
+            var editedContact = _contactService.GetContactById(CurrentContact.Id);
 
             var navParams = new ShellNavigationQueryParameters
             {

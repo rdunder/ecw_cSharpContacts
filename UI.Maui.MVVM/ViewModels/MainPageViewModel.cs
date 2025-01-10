@@ -4,7 +4,6 @@ using CommunityToolkit.Mvvm.Input;
 using Lib.Main.Interfaces;
 using Lib.Main.Models;
 using System.Collections.ObjectModel;
-using System.Diagnostics;
 using UI.Maui.MVVM.Pages;
 
 namespace UI.Maui.MVVM.ViewModels;
@@ -46,11 +45,11 @@ public partial class MainPageViewModel : ObservableObject
     [RelayCommand]
     public void ShowContactDetails()
     {
-        if (_selectedContact != null)
+        if (SelectedContact != null)
         {
             var navParam = new ShellNavigationQueryParameters
             {
-                {"SelectedContact", _selectedContact }
+                {"SelectedContact", SelectedContact }
             };
 
             Shell.Current.GoToAsync(nameof(ContactDetailsPage), navParam);
@@ -66,7 +65,7 @@ public partial class MainPageViewModel : ObservableObject
             return;
         }            
 
-        var filteredList = _contacts.Where(x => x.LastName.StartsWith(query, StringComparison.OrdinalIgnoreCase)).ToList();
+        var filteredList = Contacts.Where(x => x.LastName.StartsWith(query, StringComparison.OrdinalIgnoreCase)).ToList();
         Contacts = new(filteredList);
     }
 }

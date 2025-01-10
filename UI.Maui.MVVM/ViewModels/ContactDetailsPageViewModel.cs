@@ -4,7 +4,6 @@ using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using Lib.Main.Interfaces;
 using Lib.Main.Models;
-using System.Diagnostics;
 using UI.Maui.MVVM.Pages;
 
 namespace UI.Maui.MVVM.ViewModels;
@@ -22,9 +21,9 @@ public partial class ContactDetailsPageViewModel(IContactService contactService)
     [RelayCommand]
     public void DeleteContact()
     {
-        if (_selectedContact != null)
+        if (SelectedContact != null)
         {
-            _contactService.RemoveContact(_selectedContact.Id);
+            _contactService.RemoveContact(SelectedContact.Id);
             Shell.Current.GoToAsync(nameof(MainPage));
         }
     }
@@ -32,11 +31,11 @@ public partial class ContactDetailsPageViewModel(IContactService contactService)
     [RelayCommand]
     public void EditContact()
     {
-        if (_selectedContact != null)
+        if (SelectedContact != null)
         {
             var navParams = new ShellNavigationQueryParameters
             {
-                {"CurrentContact", _selectedContact}
+                {"CurrentContact", SelectedContact}
             };
             Shell.Current.GoToAsync(nameof(ContactEditPage), navParams);
         }

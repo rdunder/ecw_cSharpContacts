@@ -16,7 +16,7 @@
             
             <ImageButton
                 Source="arrow_left.png"
-                x:Name="btnBack"
+                x:Name="BtnBack"
                 Grid.Row="0"
                 HeightRequest="40"
                 Padding="10"

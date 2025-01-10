@@ -15,17 +15,16 @@
 
         <VerticalStackLayout Grid.Row="0" Spacing="5" Padding="10">
             <Button 
-                Grid.Row="0" 
                 Text="+ Add Contact" 
                 HeightRequest="70" 
                 BackgroundColor="DarkOliveGreen" 
                 Clicked="btnGoToAddContact_Clicked"/>
             <SearchBar 
-                x:Name="searchBar"
+                x:Name="SearchBar"
                 Placeholder="Search Contact"
                 HeightRequest="50"
                 SearchCommand="{Binding SearchContactCommand}"
-                SearchCommandParameter="{Binding Text, Source={x:Reference searchBar}}"/>
+                SearchCommandParameter="{Binding Text, Source={x:Reference SearchBar}}"/>
         </VerticalStackLayout>
         
 
@@ -44,7 +43,7 @@
 
                     <VerticalStackLayout Spacing="5" Padding="10">
                         <Label Text="{Binding FullName}" FontSize="14"/>
-                        <BoxView HeightRequest="1" Color="DarkOliveGreen" Grid.Column="1" />
+                        <BoxView HeightRequest="1" Color="DarkOliveGreen" />
                     </VerticalStackLayout>
 
 

@@ -50,7 +50,7 @@
 
             <HorizontalStackLayout Grid.Row="1" HorizontalOptions="Center" Spacing="50">
                 <Button  Text="Save"  WidthRequest="150" Command="{Binding AddContactCommand}" BackgroundColor="DarkOliveGreen"/>
-                <Button  Text="Cancel"  WidthRequest="150" x:Name="btnCancel" Clicked="btnCancel_Clicked" BackgroundColor="Firebrick" />
+                <Button  Text="Cancel"  WidthRequest="150" x:Name="BtnCancel" Clicked="btnCancel_Clicked" BackgroundColor="Firebrick" />
             </HorizontalStackLayout>
 
         </Grid>
